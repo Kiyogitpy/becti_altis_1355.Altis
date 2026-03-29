@@ -48,6 +48,7 @@ if (typeName _team == "SIDE") then {
 
 //--- Determine the time needed to construct the unit (in case of d/c or timeout).
 _var = missionNamespace getVariable _classname;
+if (isNil '_var') exitWith { [_seed, _classname, _team, _factory] call CTI_SE_FNC_OnClientPurchaseComplete };
 _required_time = _var select CTI_UNIT_TIME;
 if (CTI_Debug) then {_required_time=0;};
 

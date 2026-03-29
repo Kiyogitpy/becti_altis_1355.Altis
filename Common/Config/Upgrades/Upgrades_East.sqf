@@ -106,7 +106,7 @@ _a=_a	+			[true];
 _c=_c +			[[100000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[CTI_UPGRADE_AIR, 1]]];
-_t=_t+			[[120*CTI_UPGRADE_RATIO]];
+_t=_t+			[[240*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[[localize "STR_Up_Halo_Jump", localize "STR_Up_Halo_Jump_Descr"]];
 _a=_a	+			[True];

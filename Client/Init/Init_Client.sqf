@@ -5,6 +5,9 @@
 
 NET_LOG=false;
 
+//--- Auto-clear script cache on mission start (for faster development/testing)
+uiNamespace setVariable ["BIS_fnc_reloadScript_cache", []];
+
 CTI_P_SideJoined = side player;
 
 CTI_P_EnemySide = If (side player == WEST) then {EAST} else {WEST};

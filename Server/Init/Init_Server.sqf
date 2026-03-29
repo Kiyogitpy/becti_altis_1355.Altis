@@ -129,6 +129,60 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 		_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideID]]; //--- You want that on public
 	};
 
+	//--- Customize West HQ with 2A72 cannon (keep coaxial M2, remove Mk19)
+	if (_side == west && typeOf _hq == "rhsusf_M1117_W") then {
+		_hq animateSource ["duke_hide", 1];
+		_hq removeWeaponTurret ["RHS_MK19", [0]];
+		//--- Remove all Mk19 magazines
+		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M430A1", [0]];
+		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M430A1", [0]];
+		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M430A1", [0]];
+		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M430A1", [0]];
+		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M430A1", [0]];
+		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M430A1", [0]];
+		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M1001", [0]];
+		//--- Add 2A72 with correct ammo
+		_hq addWeaponTurret ["rhs_weap_2a72", [0]];
+		_hq addMagazineTurret ["rhs_mag_3ubr11_150", [0]];
+		_hq addMagazineTurret ["rhs_mag_3ubr11_150", [0]];
+		_hq addMagazineTurret ["rhs_mag_3uof8_150", [0]];
+		_hq addMagazineTurret ["rhs_mag_3uof8_150", [0]];
+	};
+
+
+	//--- Spawn additional vehicles near HQ
+	private ["_additional_vehicles", "_vehicle_pos", "_startup_equipment"];
+	_additional_vehicles = [];
+	switch (_side) do {
+		case west: {
+			_additional_vehicles = ["rhsgref_cdf_b_zil131_flatbed_cover", "rhsgref_hidf_m113a3_mk19"];
+		};
+		case east: {
+			_additional_vehicles = ["rhs_tigr_sts_vv", "rhsgref_ins_gaz66_ap2"];
+		};
+	};
+
+	{
+		_vehicle_pos = [_startPos, 10 + (random 20), random 360] call BIS_fnc_relPos;
+		_vehicle = [_x, _vehicle_pos, random 360, _side, true, true, true] call CTI_CO_FNC_CreateVehicle;
+		_vehicle setVariable ["cti_occupant", _side, true];
+		
+		// Equip the main supply vehicle with startup gear
+		if (_forEachIndex == 0) then {
+			_startup_equipment = [];
+			{
+				_equipment = _x select 1;
+				_startup_equipment = _startup_equipment + _equipment;
+			} forEach (missionNamespace getVariable format["CTI_%1_Vehicles_Startup", _side]);
+			
+			if (count _startup_equipment > 0) then {
+				[_vehicle, _startup_equipment] call CTI_CO_FNC_EquipVehicleCargoSpace;
+			};
+		};
+		
+		[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
+	} forEach _additional_vehicles;
+
 
 
 	//--- Generic per-logic variables
@@ -318,6 +372,7 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 	} forEach [east,west];
 
 };
+
 
 //Logging of varius values
 0 spawn {

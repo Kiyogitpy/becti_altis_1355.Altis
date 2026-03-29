@@ -10,7 +10,7 @@ CTI_P_SideJoined = civilian;
 
 
 //CTI_DEBUG = true;
-CTI_DEBUG = false;
+CTI_DEBUG = true;
 NETSEND_DEBUG= false;
 //--- Log levels
 CTI_Log_Debug = 3;
@@ -19,7 +19,7 @@ CTI_Log_Warning = 1;
 CTI_Log_Error = 0;
 
 //--- Log level to use
-CTI_Log_Level = 0;
+CTI_Log_Level = 1;
 
 //--- We define the log function early so that we can use it
 CTI_CO_FNC_Log = compile preprocessFileLineNumbers "Common\Functions\Common_Log.sqf";
@@ -66,7 +66,10 @@ if (CTI_IsClient && isMultiplayer) then {
 };
 
 //--- In MP, we get the parameters.
+
+// Kiyo was here change back at later date!
 if (isMultiplayer) then {call Compile preprocessFileLineNumbers "Common\Init\Init_Parameters.sqf"};
+//{call Compile preprocessFileLineNumbers "Common\Init\Init_Parameters.sqf"};
 
 //--- Server JIP/DC Handler
 if (isMultiplayer && CTI_IsServer) then {

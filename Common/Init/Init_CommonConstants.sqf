@@ -419,7 +419,7 @@ CTI_BASE_PURCHASE_UNITS_RANGE = 150; //--- Determine how far a player has to be 
 CTI_BASE_PURCHASE_UNITS_RANGE_CC = 7500; //--- Determine how far a player has to be from a factory to access the Factory Menu with CC
 
 //--- Base: Workers
-CTI_BASE_WORKERS_BUILD_COEFFICIENT = 1; //--- Worker build speed multiplier (<coefficient> / (<structure build time> / 100)), higher is faster.
+CTI_BASE_WORKERS_BUILD_COEFFICIENT = 10; //--- Worker build speed multiplier (<coefficient> / (<structure build time> / 100)), higher is faster.
 CTI_BASE_WORKERS_BUILD_RANGE = 20; //--- Worker minimal build distance.
 CTI_BASE_WORKERS_LIMIT = 10; //--- Maximum amount of worker which may be purchased by a side
 CTI_BASE_WORKERS_PRICE = 300; //--- Worker price.
@@ -432,7 +432,7 @@ CTI_BASE_WORKERS_WANDER_RANGE_MAX = 225; //--- Worker may wander no further than
 
 //--- Base: Parameters
 with missionNamespace do {
-	if (isNil 'CTI_BASE_AREA_MAX') then {CTI_BASE_AREA_MAX = if (ISLAND != 1) then {4} else {3};};
+	if (isNil 'CTI_BASE_AREA_MAX') then {CTI_BASE_AREA_MAX = if (ISLAND != 1) then {3} else {2};};
 	if (isNil 'CTI_BASE_AREA_RANGE') then {CTI_BASE_AREA_MAX = if (ISLAND != 1) then {250} else {100};};
 	if (isNil 'CTI_BASE_FOB_MAX') then {CTI_BASE_FOB_MAX = 4}; //--- Maximum amount of FOBs which a side may place
 	if (isNil 'CTI_BASE_HQ_REPAIR') then {CTI_BASE_HQ_REPAIR = 1}; //--- Determine whether the HQ can be repaired or not
@@ -554,7 +554,7 @@ CTI_HALO_COOLDOWN = 20*60;
 CTI_HALO_LASTTIME=-CTI_HALO_COOLDOWN;
 CTI_HALO_ALTITUDE = 3000;
 CTI_HALO_RATIO = 3;
-CTI_UPGRADE_RATIO = if (ISLAND != 1) then {7} else {2};
+CTI_UPGRADE_RATIO = if (ISLAND != 1) then {3.5} else {1};
 
 
 CTI_VOTE_RATIO=0.51;
@@ -572,9 +572,9 @@ with missionNamespace do {
 	CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_WEST = 0.3;
 	CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_EAST = 0.3;
 
-	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_EAST') then {CTI_ECONOMY_STARTUP_FUNDS_EAST = 900};
+	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_EAST') then {CTI_ECONOMY_STARTUP_FUNDS_EAST = 9000000};
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER') then {CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER = 900000};
-	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_WEST') then {CTI_ECONOMY_STARTUP_FUNDS_WEST = 900};
+	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_WEST') then {CTI_ECONOMY_STARTUP_FUNDS_WEST = 9000000};
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER') then {CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER = 900000};
 
 	// CTI_ECONOMY_STARTUP_FUNDS_EAST = 80000;

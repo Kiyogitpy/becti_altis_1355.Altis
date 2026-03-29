@@ -8,9 +8,11 @@ switch (_action) do {
 		_def_count=count (units ((CTI_P_SideLogic getVariable ["cti_defensive_team",grpNull])));
 
 		if (CTI_P_DefensesAutoManning) then {
-			ctrlSetText [100011, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]]
+			ctrlSetText [100011, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]];
+			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011) ctrlSetBackgroundColor [0.768627451, 1, 0.137254902, 0.7];
 		} else {
-			ctrlSetText [100011, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]]
+			ctrlSetText [100011, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]];
+			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011) ctrlSetBackgroundColor [1, 0, 0, 0.7];
 		};
 		if ((missionnamespace getVariable "CTI_BASEBUILDING") != 1) then {
 			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100005) ctrlSetText format [localize "STR_Add_Worker", CTI_BASE_WORKERS_PRICE];
@@ -100,9 +102,11 @@ switch (_action) do {
 		CTI_P_DefensesAutoManning = !CTI_P_DefensesAutoManning;
 		_def_count=count (units ((CTI_P_SideLogic getVariable ["cti_defensive_team",grpNull])));
 		if (CTI_P_DefensesAutoManning) then {
-			ctrlSetText [100011, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]]
+			ctrlSetText [100011, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]];
+			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011) ctrlSetBackgroundColor [0.768627451, 1, 0.137254902, 0.7];
 		} else {
-			ctrlSetText [100011, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]]
+			ctrlSetText [100011, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]];
+			((uiNamespace getVariable "cti_dialog_ui_buildmenu") displayCtrl 100011) ctrlSetBackgroundColor [1, 0, 0, 0.7];
 		};
 	};
 	case "onAddWorker": {

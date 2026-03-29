@@ -62,5 +62,7 @@ if (CTI_SM_FAR == 1) then {
 
 CTI_P_Repairing = false;
 
+//--- Equip RHS Night Vision Goggles on spawn/respawn
+player linkItem "rhsusf_ANPVS_15";
 
 player setVariable ["CTI_UID",getPlayerUID player, true];

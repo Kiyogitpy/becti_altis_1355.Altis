@@ -440,211 +440,211 @@ _p = _p		+ [10];
 
 //--- Weapons (Nested array elements are defined but skiped in the gear menu)
 //Rifles
-_i = _i		+ ["hgun_PDW2000_F"];
+_i = _i		+ ["rhs_weap_ak74sbr"];
 _u = _u		+ [0];
 _p = _p		+ [10];
 
-_i = _i		+ ["SMG_02_F"];
+_i = _i		+ ["rhs_weap_ak74sbr"];
 _u = _u		+ [0];
 _p = _p		+ [10];
 
-_i = _i		+ ["SMG_03C_black"];
+_i = _i		+ ["rhs_weap_ak74sbr"];
 _u = _u		+ [0];
 _p = _p		+ [15];
 
-_i = _i		+ ["SMG_03C_hex"];
+_i = _i		+ ["rhs_weap_ak74sbr"];
 _u = _u		+ [0];
 _p = _p		+ [15];
 
-_i = _i		+ ["SMG_03_black"];
+_i = _i		+ ["rhs_weap_ak74sbr"];
 _u = _u		+ [0];
 _p = _p		+ [15];
 
-_i = _i		+ ["SMG_03_hex"];
+_i = _i		+ ["rhs_weap_ak74sbr"];
 _u = _u		+ [0];
 _p = _p		+ [15];
 
-_i = _i		+ ["SMG_03C_TR_black"];
+_i = _i		+ ["rhs_weap_ak74sbr"];
 _u = _u		+ [1];
 _p = _p		+ [20];
 
-_i = _i		+ ["SMG_03C_TR_hex"];
+_i = _i		+ ["rhs_weap_ak74sbr"];
 _u = _u		+ [1];
 _p = _p		+ [20];
 
-_i = _i		+ ["SMG_03_TR_black"];
+_i = _i		+ ["rhs_weap_ak74sbr"];
 _u = _u		+ [1];
 _p = _p		+ [20];
 
-_i = _i		+ ["SMG_03_TR_hex"];
+_i = _i		+ ["rhs_weap_ak74sbr"];
 _u = _u		+ [1];
 _p = _p		+ [20];
 
-_i = _i		+ ["arifle_AKS_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [0];
 _p = _p		+ [30];
 
-_i = _i		+ ["arifle_TRG20_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [0];
 _p = _p		+ [35];
 
-_i = _i		+ ["arifle_TRG21_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [0];
 _p = _p		+ [40];
 
-_i = _i		+ ["arifle_TRG21_GL_F"];
+_i = _i		+ ["rhs_weap_ak74m_gp25"];
 _u = _u		+ [0];
 _p = _p		+ [50];
 
-_i = _i		+ ["arifle_AKM_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [1];
 _p = _p		+ [40];
 
-_i = _i		+ ["arifle_Katiba_C_F"];
+_i = _i		+ ["rhs_weap_ak74sbr"];
 _u = _u		+ [1];
 _p = _p		+ [50];
 
-_i = _i		+ ["arifle_Katiba_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [1];
 _p = _p		+ [100];
 
-_i = _i		+ ["arifle_Katiba_GL_F"];
+_i = _i		+ ["rhs_weap_ak74m_gp25"];
 _u = _u		+ [1];
 _p = _p		+ [125];
 
-_i = _i		+ ["LMG_Zafir_F"];
+_i = _i		+ ["rhs_weap_pkm"];
 _u = _u		+ [2];
 _p = _p		+ [150];
 
-_i = _i		+ ["srifle_DMR_01_F"];
+_i = _i		+ ["rhs_weap_svdp"];
 _u = _u		+ [2];
 _p = _p		+ [200];
 
-_i = _i		+ ["arifle_CTAR_blk_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [1];
 _p = _p		+ [30];
 
-_i = _i		+ ["arifle_CTAR_ghex_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [1];
 _p = _p		+ [30];
 
-_i = _i		+ ["arifle_CTAR_hex_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [1];
 _p = _p		+ [30];
 
-_i = _i		+ ["arifle_CTAR_GL_blk_F"];
+_i = _i		+ ["rhs_weap_ak74m_gp25"];
 _u = _u		+ [1];
 _p = _p		+ [35];
 
-_i = _i		+ ["arifle_CTAR_GL_ghex_F"];
+_i = _i		+ ["rhs_weap_ak74m_gp25"];
 _u = _u		+ [1];
 _p = _p		+ [35];
 
-_i = _i		+ ["arifle_CTAR_GL_hex_F"];
+_i = _i		+ ["rhs_weap_ak74m_gp25"];
 _u = _u		+ [1];
 _p = _p		+ [35];
 
-_i = _i		+ ["arifle_CTARS_blk_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [1];
 _p = _p		+ [50];
 
-_i = _i		+ ["arifle_CTARS_ghex_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [1];
 _p = _p		+ [50];
 
-_i = _i		+ ["arifle_CTARS_hex_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [1];
 _p = _p		+ [50];
 
-_i = _i		+ ["arifle_AK12U_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [2];
 _p = _p		+ [80];
 
-_i = _i		+ ["arifle_AK12U_arid_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [2];
 _p = _p		+ [80];
 
-_i = _i		+ ["arifle_AK12_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [2];
 _p = _p		+ [100];
 
-_i = _i		+ ["arifle_AK12_GL_F"];
+_i = _i		+ ["rhs_weap_ak74m_gp25"];
 _u = _u		+ [2];
 _p = _p		+ [100];
 
-_i = _i		+ ["arifle_RPK12_F"];
+_i = _i		+ ["rhs_weap_pk"];
 _u = _u		+ [3];
 _p = _p		+ [180];
 
-_i = _i		+ ["arifle_RPK12_arid_F"];
+_i = _i		+ ["rhs_weap_pkm"];
 _u = _u		+ [3];
 _p = _p		+ [180];
 
-_i = _i		+ ["srifle_DMR_07_blk_F"];
+_i = _i		+ ["rhs_weap_svdp"];
 _u = _u		+ [2];
 _p = _p		+ [200];
 
-_i = _i		+ ["srifle_DMR_07_ghex_F"];
+_i = _i		+ ["rhs_weap_svdp"];
 _u = _u		+ [2];
 _p = _p		+ [200];
 
-_i = _i		+ ["srifle_DMR_07_hex_F"];
+_i = _i		+ ["rhs_weap_svdp"];
 _u = _u		+ [2];
 _p = _p		+ [200];
 
-_i = _i		+ ["arifle_SDAR_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [2];
 _p = _p		+ [100];
 
-_i = _i		+ ["arifle_ARX_blk_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [3];
 _p = _p		+ [250];
 
-_i = _i		+ ["arifle_ARX_ghex_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [3];
 _p = _p		+ [250];
 
-_i = _i		+ ["arifle_ARX_hex_F"];
+_i = _i		+ ["rhs_weap_ak74m"];
 _u = _u		+ [3];
 _p = _p		+ [250];
 
-_i = _i		+ ["MMG_01_hex_F"];
+_i = _i		+ ["rhs_weap_pkm"];
 _u = _u		+ [3];
 _p = _p		+ [400];
 
-_i = _i		+ ["MMG_01_tan_F"];
+_i = _i		+ ["rhs_weap_pkm"];
 _u = _u		+ [3];
 _p = _p		+ [400];
 
-_i = _i		+ ["srifle_DMR_05_blk_F"];
+_i = _i		+ ["rhs_weap_m14_ebr"];
 _u = _u		+ [3];
 _p = _p		+ [300];
 
-_i = _i		+ ["srifle_DMR_05_hex_F"];
+_i = _i		+ ["rhs_weap_m14_ebr"];
 _u = _u		+ [3];
 _p = _p		+ [300];
 
-_i = _i		+ ["srifle_DMR_05_tan_f"];
+_i = _i		+ ["rhs_weap_m14_ebr"];
 _u = _u		+ [3];
 _p = _p		+ [300];
 
-_i = _i		+ ["srifle_DMR_04_F"];
+_i = _i		+ ["rhs_weap_mosin_sniper"];
 _u = _u		+ [3];
 _p = _p		+ [250];
 
-_i = _i		+ ["srifle_DMR_04_Tan_F"];
+_i = _i		+ ["rhs_weap_mosin_sniper"];
 _u = _u		+ [3];
 _p = _p		+ [250];
 
-_i = _i		+ ["srifle_GM6_F"];
+_i = _i		+ ["rhs_weap_mosin_sniper"];
 _u = _u		+ [3];
 _p = _p		+ [500];
 
-_i = _i		+ ["srifle_GM6_camo_F"];
+_i = _i		+ ["rhs_weap_mosin_sniper"];
 _u = _u		+ [3];
 _p = _p		+ [500];
 
-_i = _i		+ ["srifle_GM6_ghex_F"];
+_i = _i		+ ["rhs_weap_mosin_sniper"];
 _u = _u		+ [3];
 _p = _p		+ [500];
 
@@ -653,56 +653,56 @@ _u = _u		+ [0];
 _p = _p		+ [25];
 
 //Launchers
-_i = _i		+ ["launch_O_Titan_short_F"];
+_i = _i		+ ["rhs_weap_igla"];
 _u = _u		+ [3];
 _p = _p		+ [250];
 
-_i = _i		+ ["launch_O_Titan_short_ghex_F"];
+_i = _i		+ ["rhs_weap_igla"];
 _u = _u		+ [3];
 _p = _p		+ [250];
 
-_i = _i		+ ["launch_O_Titan_F"];
+_i = _i		+ ["rhs_weap_igla"];
 _u = _u		+ [2];
 _p = _p		+ [200];
 
-_i = _i		+ ["launch_O_Titan_ghex_F"];
+_i = _i		+ ["rhs_weap_igla"];
 _u = _u		+ [2];
 _p = _p		+ [200];
 
-_i = _i		+ ["launch_O_Vorona_brown_F"];
+_i = _i		+ ["rhs_weap_rpg32"];
 _u = _u		+ [3];
 _p = _p		+ [350];
 
-_i = _i		+ ["launch_O_Vorona_green_F"];
+_i = _i		+ ["rhs_weap_rpg32"];
 _u = _u		+ [3];
 _p = _p		+ [350];
 
-_i = _i		+ ["launch_RPG32_F"];
+_i = _i		+ ["rhs_weap_rpg32"];
 _u = _u		+ [1];
 _p = _p		+ [150];
 
-_i = _i		+ ["launch_RPG32_ghex_F"];
+_i = _i		+ ["rhs_weap_rpg32"];
 _u = _u		+ [1];
 _p = _p		+ [150];
 
-_i = _i		+ ["launch_RPG7_F"];
+_i = _i		+ ["rhs_weap_rpg7"];
 _u = _u		+ [0];
 _p = _p		+ [50];
 
 //Pistols
-_i = _i		+ ["hgun_Pistol_01_F"];
+_i = _i		+ ["rhs_weap_makarov_pm"];
 _u = _u		+ [0];
 _p = _p		+ [5];
 
-_i = _i		+ ["hgun_Rook40_F"];
+_i = _i		+ ["rhs_weap_rook40"];
 _u = _u		+ [1];
 _p = _p		+ [10];
 
-_i = _i		+ ["hgun_Pistol_heavy_02_F"];
+_i = _i		+ ["rhs_weap_pb_6p9"];
 _u = _u		+ [2];
 _p = _p		+ [20];
 
-_i = _i		+ ["hgun_Pistol_Signal_F"];
+_i = _i		+ ["rhs_weap_flare"];
 _u = _u		+ [0];
 _p = _p		+ [15];
 

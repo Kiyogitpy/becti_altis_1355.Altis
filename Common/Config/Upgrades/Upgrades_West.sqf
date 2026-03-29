@@ -105,7 +105,7 @@ _a=_a	+			[true];
 _c=_c +			[[100000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[CTI_UPGRADE_AIR, 1]]];
-_t=_t+			[[120*CTI_UPGRADE_RATIO]];
+_t=_t+			[[240*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[[localize "STR_Up_Halo_Jump", localize "STR_Up_Halo_Jump_Descr"]];
 _a=_a	+			[True];
@@ -140,8 +140,8 @@ _l=_l+			[[localize "STR_Up_Intrusion", localize "STR_Up_Intrusion_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[2000,6000,12000]];
 _lev=_lev+	[3];
-_lin=_lin+	[[[CTI_UPGRADE_NETR, 1],[CTI_UPGRADE_NETR, 2],[CTI_UPGRADE_NETR, 3]]];
 _t=_t+			[[10*CTI_UPGRADE_RATIO,30*CTI_UPGRADE_RATIO,60*CTI_UPGRADE_RATIO]];
+_lin=_lin+	[[[CTI_UPGRADE_NETR, 1],[CTI_UPGRADE_NETR, 2],[CTI_UPGRADE_NETR, 3]]];
 
 _l=_l+			[[localize "STR_Up_Data", localize "STR_Up_Data_Descr"]];
 _a=_a	+			[True];

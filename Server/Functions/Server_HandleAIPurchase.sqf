@@ -61,12 +61,18 @@ _var_classname = missionNamespace getVariable _req_classname;
 _req_time_out = if !(isNil '_var_classname') then {time + (_var_classname select CTI_UNIT_TIME)} else {5};
 
 //--- Custom vehicle?
-_script = _var_classname select CTI_UNIT_SCRIPT;
+_script = if !(isNil '_var_classname') then { _var_classname select CTI_UNIT_SCRIPT } else { "" };
 _customid = -1;
-if (typeName (_var_classname select CTI_UNIT_SCRIPT) == "ARRAY") then { _model = (_var_classname select CTI_UNIT_SCRIPT) select 0; _script = (_var_classname select CTI_UNIT_SCRIPT) select 1; _customid = (_var_classname select CTI_UNIT_SCRIPT) select 2};
+if (!(isNil '_var_classname')) then {
+	if (typeName (_var_classname select CTI_UNIT_SCRIPT) == "ARRAY") then { 
+		_model = (_var_classname select CTI_UNIT_SCRIPT) select 0; 
+		_script = (_var_classname select CTI_UNIT_SCRIPT) select 1; 
+		_customid = (_var_classname select CTI_UNIT_SCRIPT) select 2
+	};
+};
 
 //--- Then we check if the buyer has enough funds to perform this operation
-_cost = _var_classname select 2;
+_cost = if !(isNil '_var_classname') then { _var_classname select 2 } else { 0 };
 if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	_crew = switch (true) do { case (_model isKindOf "Tank"): {"Crew"}; case (_model isKindOf "Air"): {"Pilot"}; default {"Soldier"}};
 	_crew = missionNamespace getVariable format["CTI_%1_%2", _req_side, _crew];
@@ -74,6 +80,8 @@ if !(_model isKindOf "Man") then { //--- Add the vehicle crew cost if applicable
 	_var_crew_classname = missionNamespace getVariable _crew;
 	if !(isNil '_var_crew_classname') then { _cost = _cost + ((count(_model call CTI_CO_FNC_GetVehicleTurrets)+1) * (_var_crew_classname select 2)) };
 };
+
+if (_cost == 0) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete };
 
 _funds = [_req_buyer, _req_side] call CTI_CO_FNC_GetFunds;
 if (_funds < _cost) exitWith { [_req_seed, _req_classname, _req_target, _factory] call CTI_SE_FNC_OnClientPurchaseComplete };
