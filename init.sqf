@@ -68,8 +68,8 @@ if (CTI_IsClient && isMultiplayer) then {
 //--- In MP, we get the parameters.
 
 // Kiyo was here change back at later date!
-if (isMultiplayer) then {call Compile preprocessFileLineNumbers "Common\Init\Init_Parameters.sqf"};
-//{call Compile preprocessFileLineNumbers "Common\Init\Init_Parameters.sqf"};
+//if (isMultiplayer) then {call Compile preprocessFileLineNumbers "Common\Init\Init_Parameters.sqf"};
+{call Compile preprocessFileLineNumbers "Common\Init\Init_Parameters.sqf"};
 
 //--- Server JIP/DC Handler
 if (isMultiplayer && CTI_IsServer) then {

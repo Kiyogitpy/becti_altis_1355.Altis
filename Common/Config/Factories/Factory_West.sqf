@@ -36,118 +36,165 @@ _u = [
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
 
 _u = [
-"rhsusf_m998_w_2dr",
-"rhsusf_m1025_w",
-"rhsusf_m1025_w_m2",
-"rhsusf_m1025_d",
+"RHS_UAZ_MSV_01",
+"rhs_gaz66_msv",
+"rhs_gaz66_flat_msv",
+"rhs_tigr_m_msv",
+"O_G_Offroad_01_F",
+"rhsusf_m1043_d",
+"rhsusf_mrzr4_d",
+"C_Hatchback_01_sport_F",
+"C_Kart_01_Vrana_F",
+"rhs_tigr_sts_vmf",
 "rhsusf_m1025_d_m2",
 "rhsusf_m1025_d_Mk19",
-"rhsusf_m1043_d",
-"rhsusf_m1043_d_m2",
-"rhsusf_m1043_d_mk19",
-"rhsusf_m1045_d",
-"rhsusf_M1220_M2_usarmy_d",
-"rhsusf_M1220_MK19_usarmy_d",
-"rhsusf_M1078A1P2_B_D_fmtv_usarmy",
-"rhsusf_M1078A1P2_B_M2_D_fmtv_usarmy",
-"rhsusf_M1083A1P2_B_D_fmtv_usarmy",
-"rhsusf_M1083A1P2_B_M2_D_fmtv_usarmy",
-"rhsusf_M1084A1P2_B_D_fmtv_usarmy",
-"rhsusf_M1117_D",
-"rhsusf_M1117_W",
-"rhsusf_M1151_m2_v1_usarmy_d",
-"rhsusf_M1151_mk19_v1_usarmy_d"
+"rhsgref_cdf_b_reg_uaz_spg9",
+"rhsusf_m1165a1_gmv_m134d_m240_socom_d",
+"rhsusf_m1151_m2crows_usarmy_d",
+"rhssaf_army_o_pts",
+"rhsusf_m1240a1_m2crows_usarmy_d",
+"rhsusf_M1220_M153_M2_usarmy_d",
+"rhsusf_m1151_mk19crows_usarmy_d"
 ];
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_LIGHT], _u];
 
 if(CTI_SHOPS_HEAVY==1) then {
 _u = [
-"rhsusf_m113_usarmy_unarmed",
-"rhsusf_m113_usarmy_M240",
-"rhsusf_m113_usarmy_MK19",
-"rhsusf_m113_usarmy_medical",
-"rhsusf_stryker_m1126_m2_d",
-"rhsusf_stryker_m1126_mk19_d",
-"rhsusf_stryker_m1127_m2_d",
-"rhsusf_stryker_m1132_m2_d",
-"rhsusf_stryker_m1134_d",
-"rhsusf_m1a1aim_tuski_d",
-"rhsusf_m1a2sep1d_usarmy",
-"rhsusf_m1a2sep2d_usarmy",
-"rhsusf_m109_usarmy"
+"rhs_btr60_msv",
+"rhs_btr70_msv",
+"rhs_btr80_msv",
+"rhs_btr80a_msv",
+"rhsgref_BRDM2_msv",
+"rhsgref_BRDM2_ATGM_msv",
+"rhs_bmp1_msv",
+"rhs_bmp1p_msv",
+"rhs_bmp2_msv",
+"rhs_bmp2k_msv",
+"rhs_bmp3_msv",
+"rhs_t72ba_tv",
+"rhs_t72bb_tv",
+"rhs_t72bc_tv",
+"rhs_t72bd_tv",
+"rhs_t72be_tv",
+"rhs_t80_tv",
+"rhs_t80a_tv",
+"rhs_t80b_tv",
+"rhs_t80bk_tv",
+"rhs_t80bv_tv",
+"rhs_t80bvk_tv",
+"rhs_t80u_tv",
+"rhs_t80u45m_tv",
+"rhs_t80ue1_tv",
+"rhs_t80uk_tv",
+"rhs_t80um_tv",
+"rhs_t90_tv",
+"rhs_t90a_tv",
+"rhs_t90am_tv",
+"rhs_t90saa_tv",
+"rhs_t90sab_tv",
+"rhs_t90sm_tv",
+"rhs_2s1_tv",
+"rhs_2s3_tv",
+"rhs_sprut_vdv",
+"rhs_zsu234_aa"
 ];
 } else {
 _u = [
-"rhsusf_m113_usarmy_unarmed",
-"rhsusf_m113_usarmy_M240",
-"rhsusf_m113_usarmy_MK19",
-"rhsusf_stryker_m1126_m2_d",
-"rhsusf_stryker_m1126_mk19_d",
-"rhsusf_m1a1aim_tuski_d",
-"rhsusf_m1a2sep2d_usarmy"
+"rhs_btr60_msv",
+"rhs_btr70_msv",
+"rhs_btr80_msv",
+"rhs_btr80a_msv",
+"rhsgref_BRDM2_msv",
+"rhsgref_BRDM2_ATGM_msv",
+"rhs_bmp1_msv",
+"rhs_bmp1p_msv",
+"rhs_bmp2_msv",
+"rhs_bmp2k_msv",
+"rhs_bmp3_msv",
+"rhs_t72ba_tv",
+"rhs_t72bb_tv",
+"rhs_t72bc_tv",
+"rhs_t72bd_tv",
+"rhs_t72be_tv",
+"rhs_t80_tv",
+"rhs_t80a_tv",
+"rhs_t80b_tv",
+"rhs_t80bk_tv",
+"rhs_t80bv_tv",
+"rhs_t80bvk_tv",
+"rhs_t80u_tv",
+"rhs_t80u45m_tv",
+"rhs_t80ue1_tv",
+"rhs_t80uk_tv",
+"rhs_t80um_tv",
+"rhs_t90_tv",
+"rhs_t90a_tv",
+"rhs_t90am_tv",
+"rhs_t90saa_tv",
+"rhs_t90sab_tv",
+"rhs_t90sm_tv",
+"rhs_2s1_tv",
+"rhs_2s3_tv",
+"rhs_sprut_vdv",
+"rhs_zsu234_aa"
 ];
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_HEAVY], _u];
 
 if(CTI_SHOPS_HEAVY==1) then {
-_u = [
-'B_UAV_02_F',
-'B_UAV_02_CAS_F',
-'B_UAV_02_dynamicLoadout_F',
-'B_UAV_05_F',
-'B_T_UAV_03_dynamicLoadout_F',
-'rhsusf_uh60a',
-'B_T_VTOL_01_infantry_F',
-'B_T_VTOL_01_vehicle_F',
-'B_T_VTOL_01_armed_F',
-'RHS_AH64D',
-'RHS_AH1Z',
-'RHS_MELB_AH6M',
-'rhsusf_ah64d',
-'rhsusf_av8b',
-'rhsusf_f16',
-'B_Slingload_01_Medevac_F',
-'B_Heli_Transport_03_F',
-'B_Heli_Transport_03_unarmed_F',
-'rhsusf_CH53E_USMC',
-'rhsusf_CH53E_USMC_GAU21',
-'rhsusf_f22'
-];
+_u = ['O_UAV_02_F'];
+_u = _u + ['O_UAV_02_CAS_F'];
+_u = _u + ['O_UAV_02_dynamicLoadout_F'];
+_u = _u + ['O_T_UAV_04_CAS_F'];
+_u = _u + ['rhs_ka60'];
+_u = _u + ['rhs_ka60'];
+_u = _u + ['rhs_mi24p'];
+_u = _u + ['rhs_mi24p'];
+_u = _u + ['O_T_VTOL_02_infantry_dynamicLoadout_F'];
+_u = _u + ['O_T_VTOL_02_vehicle_dynamicLoadout_F'];
+_u = _u + ['rhs_su25sm'];
+_u = _u + ['rhs_mig29s'];
+_u = _u + ['rhs_mi8mt'];
+_u = _u + ['Land_Pod_Heli_Transport_04_bench_F'];
+_u = _u + ['RHS_Mi24P_vdv'];
+_u = _u + ['Land_Pod_Heli_Transport_04_covered_F'];
+_u = _u + ['Land_Pod_Heli_Transport_04_medevac_F'];
 } else {
-_u = [
-'B_UAV_02_F',
-'B_UAV_02_CAS_F',
-'B_UAV_02_dynamicLoadout_F',
-'B_UAV_05_F',
-'B_T_UAV_03_dynamicLoadout_F',
-'rhsusf_uh60a',
-'B_T_VTOL_01_infantry_F',
-'RHS_AH64D',
-'rhsusf_ah64d',
-'B_Slingload_01_Medevac_F',
-'rhsusf_CH53E_USMC',
-'rhsusf_f22'
-];
+
+_u = ['O_UAV_02_F'];
+_u = _u + ['O_UAV_02_CAS_F'];
+_u = _u + ['O_UAV_02_dynamicLoadout_F'];
+_u = _u + ['O_T_UAV_04_CAS_F'];
+_u = _u + ['rhs_ka60'];
+_u = _u + ['rhs_ka60'];
+_u = _u + ['rhs_mi24p'];
+_u = _u + ['rhs_mi24p'];
+_u = _u + ['O_T_VTOL_02_infantry_dynamicLoadout_F'];
+_u = _u + ['O_T_VTOL_02_vehicle_dynamicLoadout_F'];
+_u = _u + ['rhs_su25sm'];
+_u = _u + ['rhs_mig29s'];
+_u = _u + ['rhs_mi8mt'];
+_u = _u + ['Land_Pod_Heli_Transport_04_bench_F'];
+_u = _u + ['RHS_Mi24P_vdv'];
+_u = _u + ['Land_Pod_Heli_Transport_04_covered_F'];
+_u = _u + ['Land_Pod_Heli_Transport_04_medevac_F'];
 };
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AIR], _u];
 
-_u = [
-"rhsusf_M1085A1P2_B_D_Medical_fmtv_usarmy",
-"rhsusf_M978A4_BKIT_usarmy_d"
-];
+_u = ["rhs_ural_open"];
+_u = _u + ["CTI_Salvager_East"];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_REPAIR], _u];
 
-_u = [
-"rhsusf_M977A4_AMMO_BKIT_usarmy_d"
-];
+_u = ["rhs_ural_open"];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_AMMO], _u];
 
-_u = [
-"B_Boat_Transport_01_F",
-"B_SDV_01_F",
-"B_Boat_Armed_01_minigun_F"
-];
+_u = ['C_Scooter_Transport_01_F'];
+_u = _u + ['O_Boat_Transport_01_F'];
+_u = _u + ['I_C_Boat_Transport_02_F'];
+_u = _u + ['O_Boat_Armed_01_hmg_F'];
+_u = _u + ['O_SDV_01_F'];
+_u = _u + ['C_Boat_Civil_01_police_F'];
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
 
 

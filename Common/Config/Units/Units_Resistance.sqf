@@ -10,6 +10,9 @@ _u = []; //--- Upgrade level needed.    0 1 2 3...
 _f = []; //--- Built from Factory.
 _s = []; //--- Script
 
+// --- Jet = Alba, heli Mi-8 rest is chDKZ
+
+
 //--- Infantry
 _c = _c + ['I_Soldier_F'];
 _p = _p + [''];

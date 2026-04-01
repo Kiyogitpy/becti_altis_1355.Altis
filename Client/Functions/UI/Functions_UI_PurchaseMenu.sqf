@@ -77,7 +77,7 @@ CTI_UI_Purchase_FillUnitsList = {
 			//--- Upgradeable?
 			_load = true;
 			if (_upgrade > -1 || CTI_Debug) then {
-				if (_upgrades select (_var select 5) < _var select CTI_UNIT_UPGRADE) then {_load = false};
+				if (_upgrades select _upgrade < _var select CTI_UNIT_UPGRADE) then {_load = false};
 			};
 
 			if (_load) then {
