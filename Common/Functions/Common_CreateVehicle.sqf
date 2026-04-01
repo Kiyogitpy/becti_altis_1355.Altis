@@ -410,5 +410,7 @@ if (_vehicle  isKindOf "Helicopter") then {
 
 //_vehicle addEventHandler ["getIn", {if ((isplayer (_this select 2)) && ({isplayer _x} count (crew (_this select 0)))<2) exitwith {(_this select 2) assignAsCommander (_this select 0)}}];
 
+//--- Apply custom loadout if one exists
+[typeOf _vehicle, _vehicle] call CTI_CO_FNC_ApplyLoadout;
 
 _vehicle

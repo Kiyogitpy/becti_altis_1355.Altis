@@ -78,6 +78,7 @@ CTI_CO_FNC_SanitizeAircraftAA = compileFinal preprocessFileLineNumbers "Common\F
 CTI_CO_FNC_SanitizeAircraftAT = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraftAT.sqf";
 CTI_CO_FNC_SanitizeAircraftCM = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraftCM.sqf";
 CTI_CO_FNC_SanitizeAircraftFFAR = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeAircraftFFAR.sqf";
+CTI_CO_FNC_ApplyLoadout = compile preprocessFileLineNumbers "Common\Config\Loadouts\Loadout_Index.sqf";
 CTI_CO_FNC_SanitizeArtillery = compileFinal preprocessFileLineNumbers "Common\Functions\Common_SanitizeArtillery.sqf";
 CTI_CO_FNC_GetRandomSkill = compileFinal preprocessFileLineNumbers "Addons\AiRandomSkill\RandomSkill.sqf";
 
