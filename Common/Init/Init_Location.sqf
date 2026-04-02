@@ -15,7 +15,13 @@ if ((_town distance _CENTER_POS)>_CENTER_RADIUS) exitwith {true};
 _town setVariable ["cti_town_name", _town_name];
 
 
-waitUntil {!isNil 'CTI_Init_JIP' && !isNil 'CTI_Init_Common'};
+waitUntil {
+	!isNil "CTI_Init_JIP" &&
+	{!isNil "CTI_CO_FNC_GetSideID"} &&
+	{!isNil "CTI_CO_FNC_GetSideFromID"} &&
+	{!isNil "CTI_CO_FNC_GetSideFlag"} &&
+	{!isNil "CTI_CO_FNC_GetSideColoration"}
+};
 
 _sideID = _town_side call CTI_CO_FNC_GetSideID;
 if (CTI_IsServer || CTI_IsHeadless) then {

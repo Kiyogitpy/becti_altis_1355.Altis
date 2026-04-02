@@ -173,6 +173,24 @@ _u = _u + [1];
 _f = _f + [CTI_FACTORY_BARRACKS];
 _s = _s + ["service-gear"];
 
+_c = _c + ['CTI_Town_Rifleman_West'];
+_p = _p + [''];
+_n = _n + ['Rifleman'];
+_o = _o + [70];
+_t = _t + [5];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_TOWN];
+_s = _s + [['rhsusf_army_ucp_rifleman', '']];
+
+_c = _c + ['CTI_Town_SupplyCrate_West'];
+_p = _p + [''];
+_n = _n + [localize 'STR_Mobile_Gear_Access_Crate'];
+_o = _o + [500];
+_t = _t + [15];
+_u = _u + [0];
+_f = _f + [CTI_FACTORY_TOWN];
+_s = _s + [['B_supplyCrate_F', 'service-gear']];
+
 
 // --- light Vehicles upgrade 0, same for both sides here and onwards
 
@@ -271,6 +289,16 @@ _n = _n + [''];
 _o = _o + [500];
 _t = _t + [10];
 _u = _u + [1];
+_f = _f + [CTI_FACTORY_LIGHT];
+_s = _s + [""];
+
+
+_c = _c + ['rhsusf_m1025_d'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [300];
+_t = _t + [5];
+_u = _u + [0];
 _f = _f + [CTI_FACTORY_LIGHT];
 _s = _s + [""];
 
@@ -753,6 +781,15 @@ _c = _c + ['RHS_Ka52_vvs'];
 _p = _p + [''];
 _n = _n + [''];
 _o = _o + [8000];
+_t = _t + [30];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
+
+_c = _c + ['RHS_AH1Z'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [7500];
 _t = _t + [30];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];

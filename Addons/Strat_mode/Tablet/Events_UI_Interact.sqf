@@ -427,7 +427,7 @@ switch (_action) do {
 			    };
 			    case 33: {// CTI_Icon_Exit Tutorial
 
-			    	if (_target isKindOf "Land_Wreck_Heli_Attack_01_F") then {
+			    	if (!isNull TUTORIAL_EXIT && _target == TUTORIAL_EXIT) then {
 			    		if ((CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false])) then {
 			    				((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,1,1];
 			    			} else {
@@ -762,7 +762,13 @@ switch (_action) do {
 	case "OnPilot": {
 		closedialog 0;
 		if (locked _target < 2) then {
-			if (isNull (driver _target)) then {player moveInDriver _target} else {0 spawn {hint "There is already a pilot"; sleep 3; hintSilent "";};};
+			if (isNull (driver _target)) then {
+				if (isMultiplayer && {!local _target}) then {
+					["SERVER", "Request_Locality", [_target, player]] call CTI_CO_FNC_NetSend;
+					waitUntil {isNull _target || !alive _target || local _target};
+				};
+				if (!isNull _target && alive _target && locked _target < 2 && isNull (driver _target)) then {player moveInDriver _target};
+			} else {0 spawn {hint "There is already a pilot"; sleep 3; hintSilent "";};};
 		};
 	};
 	case "OnHalo": {

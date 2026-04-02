@@ -84,6 +84,14 @@ _attempts = 0;
 _real_attempts = 0;
 _asked= missionNamespace getVariable "CTI_BASE_STARTUP_PLACEMENT";
 waitUntil {CTI_InitTowns};
+waitUntil {
+	CTI_Init_Common &&
+	{!isNil "CTI_CO_FNC_GetSideID"} &&
+	{!isNil "CTI_CO_FNC_CreateVehicle"} &&
+	{!isNil "CTI_CO_FNC_EquipVehicleCargoSpace"} &&
+	{!isNil "CTI_CO_FNC_OnHQHandleDamage"} &&
+	{!isNil "CTI_CO_FNC_GetSideLogic"}
+};
 _eastLocation=CENTER_POS;
 _westLocation=CENTER_POS;
 while {(_eastLocation distance _westLocation) <(_asked)*0.95 ||(_eastLocation distance _westLocation) >( _asked)*1.25 || {(_x distance _eastLocation)<600} count CTI_Towns>0 || {(_x distance _westLocation)<600} count CTI_Towns>0 ||(_eastLocation distance CENTER_POS) > ( _asked)*0.75 ||(_westLocation distance CENTER_POS) > ( _asked)*0.75 } do {
@@ -243,7 +251,12 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 	_teams = [];
 
 	0 spawn {
-		waitUntil {CTI_Init_Server};
+		waitUntil {
+			CTI_Init_Server &&
+			{!isNil "CTI_CO_FNC_GetSideLogic"} &&
+			{!isNil "CTI_CO_FNC_GetSideID"} &&
+			{!isNil "CTI_CO_FNC_EquipUnit"}
+		};
 		while {! CTi_GameOver} do {
 			{
 				_unit=_x;
@@ -345,6 +358,12 @@ if (( missionNamespace getVariable [ "CTI_BASE_DEFENSES_AUTO_LIMIT",0]) >0) then
 
 if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 	waitUntil {!isNil 'CTI_InitTowns'};
+	waitUntil {
+		!isNil "CTI_CO_FNC_GetSideLogic" &&
+		{!isNil "CTI_CO_FNC_GetSideHQ"} &&
+		{!isNil "CTI_CO_FNC_GetSideStructures"} &&
+		{!isNil "CTI_CO_FNC_GetSideFromID"}
+	};
 	sleep 10; // prenvent loading without all town FSM stable
 	if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
 		0 call PERS_LOAD;
@@ -364,6 +383,11 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 		};
 	};
 } else {
+	waitUntil {
+		!isNil "CTI_CO_FNC_GetSideLogic" &&
+		{!isNil "CTI_CO_FNC_GetSideHQ"} &&
+		{!isNil "CTI_CO_FNC_GetSideStructures"}
+	};
 	CTI_Init_Server=True;
 	{
 		    _side=_x;
@@ -376,6 +400,12 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 
 //Logging of varius values
 0 spawn {
+		waitUntil {
+			!isNil "CTI_CO_FNC_GetSideLogic" &&
+			{!isNil "CTI_CO_FNC_GetSideHQ"} &&
+			{!isNil "CTI_CO_FNC_GetSideCommander"} &&
+			{!isNil "CTI_CO_FNC_GetSideTownCount"}
+		};
 		sleep 100; //wait for everything to finish loading
 		_version = 4; //version of DiscordBot logReader
 		_arr = 	[["CTI_DataPacket", "Header"],

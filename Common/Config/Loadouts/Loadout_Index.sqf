@@ -20,6 +20,31 @@ CTI_CO_FNC_ApplyLoadout = {
 			_vehicle call compile preprocessFileLineNumbers "Common\Config\Loadouts\Loadout_MELB_AH6M.sqf";
 			_loadout_applied = true;
 		};
+
+		case "RHS_AH1Z": {
+			_vehicle call compile preprocessFileLineNumbers "Common\Config\Loadouts\Loadout_AH1Z.sqf";
+			_loadout_applied = true;
+		};
+
+		case "RHS_AH1Z_wd": {
+			_vehicle call compile preprocessFileLineNumbers "Common\Config\Loadouts\Loadout_AH1Z.sqf";
+			_loadout_applied = true;
+		};
+
+		case "RHS_AH64D": {
+			_vehicle call compile preprocessFileLineNumbers "Common\Config\Loadouts\Loadout_AH64D.sqf";
+			_loadout_applied = true;
+		};
+
+		case "RHS_AH64D_wd": {
+			_vehicle call compile preprocessFileLineNumbers "Common\Config\Loadouts\Loadout_AH64D.sqf";
+			_loadout_applied = true;
+		};
+
+		case "RHS_AH64DGrey": {
+			_vehicle call compile preprocessFileLineNumbers "Common\Config\Loadouts\Loadout_AH64D.sqf";
+			_loadout_applied = true;
+		};
 		
 		//--- Add more vehicle loadouts here
 		// case "rhs_t72ba_tv": {

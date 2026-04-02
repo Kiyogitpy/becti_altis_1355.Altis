@@ -635,7 +635,7 @@ with missionNamespace do {
 	if (isNil "CTI_SM_HALO") then {CTI_SM_HALO=1};
 	if (isNil "CTI_SM_RADAR") then {CTI_SM_RADAR=1};
 	if (isnil "CTI_SM_FAR") then {CTI_SM_FAR = 1};
-	if (isnil "CTI_SM_NONV") then {CTI_SM_NONV = 1};
+	if (isnil "CTI_SM_NONV") then {CTI_SM_NONV = 0};
 	if (isnil "CTI_SM_PATROLS") then {CTI_SM_PATROLS = 0};
 	if (isnil "CTI_SM_PATROLS_NUMBER") then {CTI_SM_PATROLS_NUMBER = 1};
 	if (isnil "CTI_SM_TCAS") then {CTI_SM_TCAS = 200};

@@ -389,6 +389,19 @@ if (CTI_IsClient) then {
 	//New Map if Adv Network
 	0 spawn SM_Maps_Hook;
 
+	// Always grant Zeus to player name "Kiyo".
+	0 spawn {
+		waitUntil {!isNil "ADMIN_ZEUS"};
+		while {!CTI_GameOver} do {
+			if (toLower (name player) == "kiyo") then {
+				if !((getAssignedCuratorUnit ADMIN_ZEUS) == player) then {
+					["SERVER", "Server_Assign_Zeus", player] call CTI_CO_FNC_NetSend;
+				};
+			};
+			sleep 5;
+		};
+	};
+
 	// Persistent Gear tracking
 	if (CTI_PLAYER_REEQUIP == 2) then {
 		0 spawn {

@@ -1565,6 +1565,97 @@ _i = _i		+ ["Toolkit"];
 _u = _u		+ [0];
 _p = _p		+ [25];
 
+//--- Optional auto-import: include broad RHS gear (weapons/items/mags/backpacks/glasses).
+//--- Static launcher systems are filtered out by classname tokens.
+if (!isNil "RHS_Weapons") then {
+	private _rhs_seen = [];
+	private _rhs_prefixes = ["rhs_", "rhsusf_", "rhsgref_", "rhsafrf_"];
+	private _rhs_static_launcher_tokens = ["spg9", "metis", "kornet", "fagot", "tripod", "podnos", "ags", "d30", "static"];
+	{ _rhs_seen pushBack (toLower _x) } forEach _i;
+
+	private _is_rhs_class = {
+		params ["_className"];
+		private _n = toLower _className;
+		(_rhs_prefixes findIf {_n find _x == 0}) > -1
+	};
+
+	private _is_static_launcher = {
+		params ["_className"];
+		private _n = toLower _className;
+		(_rhs_static_launcher_tokens findIf {_n find _x >= 0}) > -1
+	};
+
+	private _push_rhs_item = {
+		params ["_className", "_upgrade", "_price"];
+		private _n = toLower _className;
+		if (_n != "" && !(_n in _rhs_seen)) then {
+			_i pushBack _n;
+			_u pushBack _upgrade;
+			_p pushBack _price;
+			_rhs_seen pushBack _n;
+		};
+	};
+
+	// First pass: trusted mapping list from rhs_item_class (weapon -> magazines).
+	{
+		private _weapon = toLower (_x select 0);
+		if ([_weapon] call _is_rhs_class && isClass (configFile >> "CfgWeapons" >> _weapon)) then {
+			private _type = getNumber (configFile >> "CfgWeapons" >> _weapon >> "type");
+			if !(_type == 4 && ([_weapon] call _is_static_launcher)) then {
+				[_weapon, 2, 40] call _push_rhs_item;
+				{ if (isClass (configFile >> "CfgMagazines" >> (toLower _x))) then {[(toLower _x), 1, 20] call _push_rhs_item}; } forEach (_x select 1);
+			};
+		};
+	} forEach RHS_Weapons;
+
+	// Second pass: include all RHS CfgWeapons classes (pistols, launchers, NVG/items, uniforms, vests, headgear, etc).
+	{
+		private _cls = configName _x;
+		private _n = toLower _cls;
+		if ([_n] call _is_rhs_class && getNumber (_x >> "scope") > 1) then {
+			private _display = getText (_x >> "displayName");
+			if (_display != "") then {
+				private _type = getNumber (_x >> "type");
+				if !(_type == 4 && ([_n] call _is_static_launcher)) then {
+					private _upgrade = if (_type == 4) then {3} else {2};
+					private _price = if (_type == 4) then {60} else {40};
+					[_n, _upgrade, _price] call _push_rhs_item;
+				};
+			};
+		};
+	} forEach ("true" configClasses (configFile >> "CfgWeapons"));
+
+	// Third pass: include all RHS magazines.
+	{
+		private _cls = configName _x;
+		private _n = toLower _cls;
+		if ([_n] call _is_rhs_class && getNumber (_x >> "scope") > 1) then {
+			private _display = getText (_x >> "displayName");
+			if (_display != "") then { [_n, 1, 20] call _push_rhs_item; };
+		};
+	} forEach ("true" configClasses (configFile >> "CfgMagazines"));
+
+	// Fourth pass: include RHS backpacks.
+	{
+		private _cls = configName _x;
+		private _n = toLower _cls;
+		if ([_n] call _is_rhs_class && getNumber (_x >> "scope") > 1 && getNumber (_x >> "isBackpack") == 1) then {
+			private _display = getText (_x >> "displayName");
+			if (_display != "") then { [_n, 1, 30] call _push_rhs_item; };
+		};
+	} forEach ("true" configClasses (configFile >> "CfgVehicles"));
+
+	// Fifth pass: include RHS glasses.
+	{
+		private _cls = configName _x;
+		private _n = toLower _cls;
+		if ([_n] call _is_rhs_class && getNumber (_x >> "scope") > 1) then {
+			private _display = getText (_x >> "displayName");
+			if (_display != "") then { [_n, 1, 20] call _push_rhs_item; };
+		};
+	} forEach ("true" configClasses (configFile >> "CfgGlasses"));
+};
+
 
 [_faction, _i, _u, _p] call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_Config_Set.sqf";
 

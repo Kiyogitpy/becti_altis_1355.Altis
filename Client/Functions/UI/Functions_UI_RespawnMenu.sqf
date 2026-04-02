@@ -311,9 +311,41 @@ CTI_UI_Respawn_OnRespawnReady = {
 		CTI_REDEPLOY=false;
 	};
 
+	// Only reuse saved loadout when it is clearly RHS-based.
+	_use_last_purchase_rhs = false;
+	if (!isNil {CTI_P_LastPurchase} && (CTI_PLAYER_REEQUIP >= 1)) then {
+		_last_purchase_major_items = [];
+		if (
+			(typeName CTI_P_LastPurchase == "ARRAY") &&
+			{(count CTI_P_LastPurchase) > 2} &&
+			{typeName (CTI_P_LastPurchase select 0) == "ARRAY"} &&
+			{(count (CTI_P_LastPurchase select 0)) > 2} &&
+			{typeName (CTI_P_LastPurchase select 1) == "ARRAY"} &&
+			{(count (CTI_P_LastPurchase select 1)) > 2} &&
+			{typeName (CTI_P_LastPurchase select 2) == "ARRAY"} &&
+			{(count (CTI_P_LastPurchase select 2)) > 1}
+		) then {
+			_last_purchase_major_items = [
+				(((CTI_P_LastPurchase select 0) select 0) select 0),
+				(((CTI_P_LastPurchase select 0) select 2) select 0),
+				(((CTI_P_LastPurchase select 1) select 0) select 0),
+				(((CTI_P_LastPurchase select 1) select 1) select 0),
+				(((CTI_P_LastPurchase select 1) select 2) select 0),
+				((CTI_P_LastPurchase select 2) select 0)
+			];
+		};
+
+		if (
+			(count _last_purchase_major_items) > 0) &&
+			{{(typeName _x == "STRING") && {(_x == "") || {(_x find "rhs") == 0}}} count _last_purchase_major_items == count _last_purchase_major_items}
+		) then {
+			_use_last_purchase_rhs = true;
+		};
+	};
+
 	if !(_respawn_ai) then { //--- Stock respawn
 		// --- zerty edit
-		if  (!isNil {CTI_P_LastPurchase } &&  (CTI_PLAYER_REEQUIP >= 1 ) ) then {
+		if (_use_last_purchase_rhs) then {
 			[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit;
 		} else {
 			[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip pure clients
@@ -321,12 +353,11 @@ CTI_UI_Respawn_OnRespawnReady = {
 		//[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip the default equipment
 	} else { //--- Respawn in own AI
 		// --- zerty edit
-		if  (!isNil {CTI_P_LastPurchase } &&  (CTI_PLAYER_REEQUIP >= 1 ) ) then {
+		if (_use_last_purchase_rhs) then {
 			[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit;
 		} else {
 			[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
 		};
-		[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player
 	};
 	if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false}; //--- Disable the unit's fatigue
 	CTI_P_Respawning = false;

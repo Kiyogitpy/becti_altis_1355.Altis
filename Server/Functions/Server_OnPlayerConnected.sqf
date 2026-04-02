@@ -32,7 +32,7 @@ _id = _this select 2;
 ["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] has joined the current session", _name, _uid]] call CTI_CO_FNC_Log;
 if (_name == '__SERVER__' || _uid == '') exitWith {}; //--- We don't care about the server!
 
-waitUntil {!isNil 'CTI_Init_Common'};
+waitUntil {!isNil 'CTI_Init_Common' && !isNil "CTI_CO_FNC_NetSend"};
 
 
 //Find Unit

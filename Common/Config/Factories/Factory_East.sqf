@@ -26,6 +26,7 @@ _u = _u		+ ['rhs_msv_engineer'];
 _u = _u		+ ['rhs_msv_aa'];
 _u = _u		+ ['rhs_msv_at'];
 _u = _u		+ ['rhs_msv_marksman'];
+_u = _u		+ ['O_supplyCrate_F']; // Allow purchase from barracks
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_BARRACKS], _u];
 
 _u 			= ['RHS_UAZ_MSV_01'];
@@ -105,6 +106,7 @@ _u = _u		+ ['RHS_Mi8MTV3_heavy_vvsc'];
 _u = _u		+ ['rhsgref_b_mi24g_CAS'];
 _u = _u		+ ['rhs_mi28n_vvs'];
 _u = _u		+ ['RHS_Ka52_vvs'];
+_u = _u		+ ['RHS_AH1Z'];
 _u = _u		+ ['RHS_AH64D'];
 _u = _u		+ ['rhs_uh1h_hidf_gunship'];
 _u = _u		+ ['RHS_UH60M_ESSS'];
@@ -175,10 +177,8 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
 
 
 //--- Units - FLAG
-_u = ['rhs_msv_rifleman'];
-_u = _u		+ ['O_supplyCrate_F'];
-_u = _u		+ ['rhs_gaz66'];
-//u = _u		+ ['rhs_gaz66']; Prevent abuse
-//_u = _u		+ ['rhs_mr3_at'];
+_u = ['CTI_Town_Rifleman_East'];
+_u = _u		+ ['CTI_Town_SupplyCrate_East'];
+_u = _u		+ ['O_G_Offroad_01_F'];
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_FTOWN], _u];

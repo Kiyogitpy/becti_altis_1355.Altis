@@ -158,6 +158,7 @@ _u = _u + ['RHS_Mi8MTV3_heavy_vvsc'];
 _u = _u + ['rhsgref_b_mi24g_CAS'];
 _u = _u + ['rhs_mi28n_vvs'];
 _u = _u + ['RHS_Ka52_vvs'];
+_u = _u + ['RHS_AH1Z'];
 _u = _u + ['RHS_AH64D'];
 _u = _u + ['rhs_uh1h_hidf_gunship'];
 _u = _u + ['RHS_UH60M_ESSS'];
@@ -229,9 +230,9 @@ missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_NAVAL], _u];
 
 //--- Units - FLAG
 _u = [
-'rhsusf_army_ucp_rifleman',
-'B_supplyCrate_F',
-'rhsusf_m1025_d'
+'CTI_Town_Rifleman_West',
+'CTI_Town_SupplyCrate_West',
+'O_G_Offroad_01_F'
 ];
 
 missionNamespace setVariable [format ["CTI_%1_%2Units", _side, CTI_FTOWN], _u];

@@ -1,3 +1,11 @@
+waitUntil {
+	!isNil "CTI_CO_FNC_GetSideLogic" &&
+	{!isNil "CTI_CO_FNC_GetSideHQ"} &&
+	{!isNil "CTI_CO_FNC_GetSideStructures"} &&
+	{!isNil "CTI_CO_FNC_GetFundsCommander"} &&
+	{!isNil "CTI_CO_FNC_GetSideUpgrades"}
+};
+
 profileNamespace setVariable ["CTI_SAVE_ENABLED",True];
 
 // save town status

@@ -1,3 +1,8 @@
+waitUntil {
+	!isNil "CTI_CO_FNC_GetSideLogic" &&
+	{!isNil "CTI_CO_FNC_GetSideGroups"}
+};
+
 _side=_this;
 _side_logic=(_this) call CTI_CO_FNC_GetSideLogic;
 diag_log format [":: COM %1 :: Starting watchdog",_side];

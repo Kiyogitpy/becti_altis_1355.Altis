@@ -88,7 +88,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["Armored"];
 _t = _t		+ ["Armored - MBT"];
-_p = _p		+ [[["rhs_t90a_msv", 1], ["rhs_t72ba_msv", 1, 50]]];
+_p = _p		+ [[["rhs_t90a_tv", 1], ["rhs_t72ba_tv", 1, 50]]];
 _f = _f		+ [CTI_HEAVY];
 _m = _m		+ [6500];
 _c = _c		+ ["Armored"];
