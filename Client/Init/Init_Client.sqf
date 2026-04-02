@@ -303,6 +303,15 @@ if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 };
 
 if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false} else  {player enableFatigue true}; //--- Disable the unit's fatigue
+
+//--- Suppress weapon sway by resetting stamina
+0 spawn {
+	while {alive player} do {
+		player setFatigue 0;
+		sleep 0.1;
+	};
+};
+
 ["SERVER", "Request_NoobLogger", [player,0]] call CTI_CO_FNC_NetSend;
 0 execVM "Addons\MapMarkersTitling.sqf";
 0 execVM "Client\Functions\Client_LaserTeamMarkers.sqf";

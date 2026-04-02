@@ -72,6 +72,9 @@ class FSM
                          "" \n
                          "" \n
                          "_end=false;" \n
+                         "_total_value = 0;" \n
+                         "{ _total_value = _total_value + (_x getVariable [""cti_town_value"", 0]); } forEach CTI_Towns;" \n
+                         "if (_total_value < 0) then { _total_value = 0; };" \n
                          "" \n
                          "{" \n
                          "	_side = _x;" \n

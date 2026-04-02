@@ -59,6 +59,10 @@ _workers pushBack _worker;
 _logic setVariable ["cti_workers", _workers, true];
 sleep (random 0.5);
 CTI_Worker_Lock=False;
+
+//--- Disable crawling on workers
+_worker setUnitTrait ["Prone", false];
+
 removeAllWeapons _worker;
 _worker disableAI "TARGET";
 _worker disableAI "AUTOTARGET";

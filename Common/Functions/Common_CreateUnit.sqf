@@ -77,9 +77,8 @@ if (_unit isKindOf "Man") then {
 //_unit setSkill (0.3 + (random 0.5));//tbd tweak
 //--- bl1p and fluit rnd skills START
 
-// Call the function
-_AISkill = missionNamespace getVariable "CTI_AI_SKILL";
-_skill = [_AISkill] call CTI_CO_FNC_GetRandomSkill;
+// Call the function with random skill level per unit (0-5)
+_skill = [] call CTI_CO_FNC_GetRandomSkill;
 
 
 // Set the skills
@@ -96,6 +95,9 @@ _unit setSkill ["reloadspeed",_skill select 9];
 //--- bl1p and fluit rnd skills END
 
 _unit enableFatigue false;
+
+//--- Disable crawling, units can only stand or crouch
+_unit setUnitTrait ["Prone", false];
 
 if (_unit isKindOf "I_Soldier_M_F") then {
 _rnd = random (1);

@@ -336,7 +336,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 		};
 
 		if (
-			(count _last_purchase_major_items) > 0) &&
+			(count _last_purchase_major_items) > 0 &&
 			{{(typeName _x == "STRING") && {(_x == "") || {(_x find "rhs") == 0}}} count _last_purchase_major_items == count _last_purchase_major_items}
 		) then {
 			_use_last_purchase_rhs = true;

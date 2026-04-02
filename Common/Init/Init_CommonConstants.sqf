@@ -596,7 +596,7 @@ with missionNamespace do {
 
 	if (isNil 'CTI_MARKERS_INFANTRY') then {CTI_MARKERS_INFANTRY = 1}; //--- Track infantry on map
 
-	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 1};
+	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 0}; //--- Fatigue disabled by default (0: Disabled, 1: Enabled)
 
 	if (isNil 'CTI_WEATHER_FAST') then {CTI_WEATHER_FAST = 3};
 	if (isNil 'CTI_WEATHER_FAST_NIGTH') then {CTI_WEATHER_FAST_NIGTH = 1};
