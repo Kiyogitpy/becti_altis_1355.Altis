@@ -311,9 +311,10 @@ CTI_UI_Respawn_OnRespawnReady = {
 		CTI_REDEPLOY=false;
 	};
 
-	// Only reuse saved loadout when it is clearly RHS-based.
-	_use_last_purchase_rhs = false;
+	// Reuse saved loadout when key items are valid for the current side gear pool.
+	_use_last_purchase_valid = false;
 	if (!isNil {CTI_P_LastPurchase} && (CTI_PLAYER_REEQUIP >= 1)) then {
+		_side_gear = missionNamespace getVariable ["cti_gear_all", []];
 		_last_purchase_major_items = [];
 		if (
 			(typeName CTI_P_LastPurchase == "ARRAY") &&
@@ -337,15 +338,15 @@ CTI_UI_Respawn_OnRespawnReady = {
 
 		if (
 			(count _last_purchase_major_items) > 0 &&
-			{{(typeName _x == "STRING") && {(_x == "") || {(_x find "rhs") == 0}}} count _last_purchase_major_items == count _last_purchase_major_items}
+			{{(typeName _x == "STRING") && {(_x == "") || {(_x in _side_gear)}}} count _last_purchase_major_items == count _last_purchase_major_items}
 		) then {
-			_use_last_purchase_rhs = true;
+			_use_last_purchase_valid = true;
 		};
 	};
 
 	if !(_respawn_ai) then { //--- Stock respawn
 		// --- zerty edit
-		if (_use_last_purchase_rhs) then {
+		if (_use_last_purchase_valid) then {
 			[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit;
 		} else {
 			[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip pure clients
@@ -353,7 +354,7 @@ CTI_UI_Respawn_OnRespawnReady = {
 		//[player, missionNamespace getVariable format ["CTI_AI_%1_DEFAULT_GEAR", CTI_P_SideJoined]] call CTI_CO_FNC_EquipUnit; //--- Equip the default equipment
 	} else { //--- Respawn in own AI
 		// --- zerty edit
-		if (_use_last_purchase_rhs) then {
+		if (_use_last_purchase_valid) then {
 			[player, CTI_P_LastPurchase] call CTI_CO_FNC_EquipUnit;
 		} else {
 			[player, _respawn_ai_gear] call CTI_CO_FNC_EquipUnit; //--- Equip the equipment of the AI on the player

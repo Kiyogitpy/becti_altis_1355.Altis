@@ -159,20 +159,33 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 
 
 	//--- Spawn additional vehicles near HQ
-	private ["_additional_vehicles", "_vehicle_pos", "_startup_equipment"];
+	private ["_additional_vehicles", "_vehicle_pos", "_startup_equipment", "_preferred", "_fallback"];
 	_additional_vehicles = [];
 	switch (_side) do {
 		case west: {
-			_additional_vehicles = ["rhsgref_cdf_b_zil131_flatbed_cover", "rhsgref_hidf_m113a3_mk19"];
+			_preferred = ["rhsgref_cdf_b_zil131_flatbed_cover", "rhsgref_hidf_m113a3_mk19"];
+			_fallback = ["B_Truck_01_transport_F", "B_MRAP_01_F"];
 		};
 		case east: {
-			_additional_vehicles = ["rhs_tigr_sts_vv", "rhsgref_ins_gaz66_ap2"];
+			_preferred = ["rhs_tigr_sts_vv", "rhsgref_ins_gaz66_ap2"];
+			_fallback = ["O_Truck_03_transport_F", "O_MRAP_02_F"];
 		};
 	};
 
+	for "_i" from 0 to ((count _preferred) - 1) do {
+		_cls = _preferred select _i;
+		if !(isClass (configFile >> "CfgVehicles" >> _cls)) then {
+			_cls = _fallback select _i;
+			diag_log format ["[INIT] Missing startup vehicle class %1 for side %2, using fallback %3", _preferred select _i, _side, _cls];
+		};
+		_additional_vehicles pushBack _cls;
+	};
+
 	{
-		_vehicle_pos = [_startPos, 10 + (random 20), random 360] call BIS_fnc_relPos;
-		_vehicle = [_x, _vehicle_pos, random 360, _side, true, true, true] call CTI_CO_FNC_CreateVehicle;
+		_vehicle_pos = [_startPos, 15 + (_forEachIndex * 10), random 360] call BIS_fnc_relPos;
+		_safe_pos = _vehicle_pos findEmptyPosition [0, 60, _x];
+		if (count _safe_pos > 0) then {_vehicle_pos = _safe_pos};
+		_vehicle = [_x, _vehicle_pos, random 360, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
 		_vehicle setVariable ["cti_occupant", _side, true];
 		
 		// Equip the main supply vehicle with startup gear

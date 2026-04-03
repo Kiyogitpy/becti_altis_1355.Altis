@@ -22,9 +22,22 @@ if (!(CTI_P_Jailed)) then { // if not jailed
 	// FIND initial position
 	while {isNull _spawn_at} do {
 		_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
+		_nearby_side_vehicles = nearestObjects [_hq, ["LandVehicle", "Air", "Ship"], 120];
+		_nearby_side_vehicles = _nearby_side_vehicles select {
+			alive _x &&
+			{(_x getVariable ["cti_occupant", sideUnknown]) == CTI_P_SideJoined} &&
+			{canMove _x}
+		};
 		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-		_spawn_at = _hq;
-		if (count _structures > 0) then {  _spawn_at = [_hq, _structures] call CTI_CO_FNC_GetClosestEntity; if (isnull _spawn_at) then { _spawn_at=_hq;} };
+		if (count _nearby_side_vehicles > 0) then {
+			_spawn_at = [_hq, _nearby_side_vehicles] call CTI_CO_FNC_GetClosestEntity;
+		} else {
+			_spawn_at = _hq;
+			if (count _structures > 0) then {
+				_spawn_at = [_hq, _structures] call CTI_CO_FNC_GetClosestEntity;
+				if (isnull _spawn_at) then { _spawn_at = _hq; };
+			};
+		};
 		sleep 1;
 	};
 

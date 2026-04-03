@@ -567,6 +567,13 @@ switch (_action) do {
 		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (510103)) ctrlcommit 0;
 	};
 	case "OnLock": {
+		if (isMultiplayer && {!local _target}) then {
+			private ["_timeout"];
+			["SERVER", "Request_Locality", [_target, player]] call CTI_CO_FNC_NetSend;
+			_timeout = time + 3;
+			waitUntil {isNull _target || !alive _target || local _target || time > _timeout};
+		};
+		if (isNull _target || !alive _target || !local _target) exitWith {false};
 		if (locked _target >0 ) then {_target lock 0;} else {_target lock 2};
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'
 	};

@@ -258,11 +258,6 @@ _prices = _prices 			+ [900];
 _placements = _placements 	+ [[180, 5]];
 _categories = _categories 	+ ["Defense"];
 
-_headers = _headers 		+ ["AA Defense"];
-_classes = _classes 		+ ["O_static_AA_F"];
-_prices = _prices 			+ [800];
-_placements = _placements 	+ [[180, 5]];
-_categories = _categories 	+ ["Defense"];
 if (ISLAND != 1) then {
 _headers = _headers 		+ ["Mortar"];
 _classes = _classes 		+ ["O_Mortar_01_F"];
