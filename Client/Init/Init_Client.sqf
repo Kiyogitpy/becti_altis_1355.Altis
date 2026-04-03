@@ -320,7 +320,7 @@ if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enable
 CTI_Init_Client = true;
 
 
-12452 cutText [localize "STR_Begin_Tutorial", "BLACK IN", 7];
+12452 cutText ["", "BLACK IN", 2];
 
 
 0 call TUTORIAL_RUN;

@@ -1,7 +1,7 @@
 with missionNamespace do {
 	//--- Infantry (CHDKZ - RHS Insurgency)
 	GUER_SOLDIER = "rhsgref_ins_g_rifleman";
-	GUER_SOLDIER_AA = "rhsgref_ins_g_specialist_aa";
+	GUER_SOLDIER_AA = "rhsgref_ins_g_spotter";
 	GUER_SOLDIER_AR = "rhsgref_ins_g_arifleman_rpk";
 	GUER_SOLDIER_AT = "rhsgref_ins_g_rifleman_RPG26";
 	GUER_SOLDIER_CREW = "rhsgref_ins_g_crew";
