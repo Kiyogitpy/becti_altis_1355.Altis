@@ -1,7 +1,7 @@
 with missionNamespace do {
 	//--- Infantry
 	GUER_SOLDIER = "rhsgref_nat_rifleman_akms";
-	GUER_SOLDIER_AA = "rhsgref_nat_grenadier_rpg";
+	GUER_SOLDIER_AA = "rhsgref_nat_rifleman_akms";
 	GUER_SOLDIER_AR = "rhsgref_nat_machinegunner";
 	GUER_SOLDIER_AT = "rhsgref_nat_grenadier_rpg";
 	GUER_SOLDIER_CREW = "rhsgref_nat_crew";

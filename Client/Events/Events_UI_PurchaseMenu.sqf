@@ -131,13 +131,38 @@ switch (_action) do {
 			if (alive(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory")) then {
 				_ai_enabled = missionNamespace getVariable "CTI_AI_TEAMS_ENABLED";
 				if (_ai_enabled >0 || ((isPlayer leader _selected_group || (missionNamespace getVariable "CTI_BUY_RESTRICT_LEADER" == 0 ))&& _ai_enabled == 0)) then {
-					if ((count units _selected_group) <= (CTI_PLAYERS_GROUPSIZE + ({isplayer _x } count ( units _selected_group ))) || _isEmpty) then { //todo ai != player limit
+					_group_units = units _selected_group;
+					_group_players = {isPlayer _x} count _group_units;
+					_group_ai = (count _group_units) - _group_players;
+					_group_ai_limit = if (isPlayer leader _selected_group) then {CTI_PLAYERS_GROUPSIZE} else {CTI_AI_TEAMS_GROUPSIZE};
+
+					if ((_group_ai < _group_ai_limit) || _isEmpty) then {
 						_proc_purchase = true;
 						if (_isEmpty && _selected_group != group player) then {
 							_proc_purchase = false;
 							hint parseText localize "STR_Purchase_Empty";
 						};
-						if ! (_classname in ( missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined,(uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type")])) then { 
+						_factory_type = (uiNamespace getVariable "cti_dialog_ui_purchasemenu_factory_type");
+						_allowed_units = +(missionNamespace getVariable [format ["CTI_%1_%2Units", CTI_P_SideJoined, _factory_type], []]);
+						_aaf_air_units = ['rhs_l39_cdf', 'rhs_l159_CDF'];
+						_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
+						if (_factory_type != CTI_BARRACKS && (count _upgrades > CTI_UPGRADE_CAPTURED) && ((_upgrades select CTI_UPGRADE_CAPTURED) > 0)) then {
+							_enemy_side = if (CTI_P_SideJoined == west) then {east} else {west};
+							{
+								if !(_x in _allowed_units) then { _allowed_units pushBack _x };
+							} forEach (missionNamespace getVariable [format ["CTI_%1_%2Units", _enemy_side, _factory_type], []]);
+						};
+						if (
+							_factory_type == CTI_AIR
+							&& CTI_P_SideJoined in [west, east]
+							&& (count _upgrades > CTI_UPGRADE_AAF)
+							&& ((_upgrades select CTI_UPGRADE_AAF) >= 5)
+						) then {
+							{
+								if !(_x in _allowed_units) then { _allowed_units pushBack _x };
+							} forEach _aaf_air_units;
+						};
+						if !(_classname in _allowed_units) then {
 							_proc_purchase = false;
 							hint parseText localize "STR_Purchase_Factory";
 						};

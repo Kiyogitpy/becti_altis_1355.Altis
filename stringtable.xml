@@ -2377,6 +2377,14 @@
 				<Original>Increase the max range of the respawn truck. 500m + lvl x 500m </Original>
 				<Russian>Увеличивает макс. дальность появления на Мед.Грузовиках и контейнерах: 500м + Ур.Улучш x 500м</Russian>
 			</Key>
+			<Key ID="STR_Up_Captured">
+				<Original>Captured Technology</Original>
+				<Russian>Захваченные технологии</Russian>
+			</Key>
+			<Key ID="STR_Up_Captured_Descr">
+				<Original>Unlock enemy non-barracks factory units. Normal factory upgrades are still required.</Original>
+				<Russian>Открывает вражеские юниты не из казарм. Обычные улучшения заводов все равно требуются.</Russian>
+			</Key>
 			<Key ID="STR_Up_Data">
 				<Original>Network: Advanced Data Link</Original>
 				<Russian>Сеть: Расширенный канал передачи данных</Russian>

@@ -107,7 +107,7 @@ CTI_AI_TEAMS_UNITS_MIN = 5; //--- Amount of units an AI leader need to have to b
 //--- AI Teams: Parameters
 with missionNamespace do {
 	//CTI_AI_TEAMS_GROUPSIZE = 12; //--- AI Teams may get up to x units
-	if (isNil 'CTI_AI_TEAMS_ENABLED') then { if !(isMultiplayer) then {CTI_AI_TEAMS_ENABLED = 3} else {CTI_AI_TEAMS_ENABLED = 0}}; //--- Determine whether AI Teams are enabled or not
+	if (isNil 'CTI_AI_TEAMS_ENABLED') then {CTI_AI_TEAMS_ENABLED = 3}; //--- Determine whether AI Teams are enabled or not
 	if (isNil 'CTI_AI_TEAMS_GROUPSIZE') then {CTI_AI_TEAMS_GROUPSIZE = 8};
 };
 //-----------------------------------------------------------------------------------------------------------------------//
@@ -239,6 +239,7 @@ CTI_UPGRADE_DATA = 			18;
 CTI_UPGRADE_TRT = 			19;
 CTI_UPGRADE_TRA = 			20;
 CTI_UPGRADE_REST = 			21;
+CTI_UPGRADE_CAPTURED = 	22;
 //-----------------------------------------------------------------------------------------------------------------------//
 
 
@@ -606,7 +607,7 @@ with missionNamespace do {
 	if (isNil 'CTI_AI_SKILL') then {CTI_AI_SKILL = 4}; //Done
 	//--- zerty parameters
 
-	if (isNil 'CTI_BASEBUILDING') then {CTI_BASEBUILDING = 1}; //DOn
+	if (isNil 'CTI_BASEBUILDING') then {CTI_BASEBUILDING = 2}; //DOn
 	if (isNil 'CTI_TEAMSWAP') then {CTI_TEAMSWAP = 1}; //DOn
 	if (isNil 'CTI_TEAMSTACK') then {CTI_TEAMSTACK = 1}; //DOn
 	if (isNil 'CTI_MAX_MISSION_TIME') then {CTI_MAX_MISSION_TIME = 0}; //DOne

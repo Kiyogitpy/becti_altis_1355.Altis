@@ -163,12 +163,12 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 	_additional_vehicles = [];
 	switch (_side) do {
 		case west: {
-			_preferred = ["rhsgref_cdf_b_zil131_flatbed_cover", "rhsgref_hidf_m113a3_mk19"];
-			_fallback = ["B_Truck_01_transport_F", "B_MRAP_01_F"];
+			_preferred = ["rhsgref_hidf_m113a3_mk19"];
+			_fallback = ["B_MRAP_01_F"];
 		};
 		case east: {
-			_preferred = ["rhs_tigr_sts_vv", "rhsgref_ins_gaz66_ap2"];
-			_fallback = ["O_Truck_03_transport_F", "O_MRAP_02_F"];
+			_preferred = ["rhs_tigr_sts_vv"];
+			_fallback = ["O_MRAP_02_F"];
 		};
 	};
 

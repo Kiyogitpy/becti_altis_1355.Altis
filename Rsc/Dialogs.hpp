@@ -213,6 +213,13 @@ class CTI_RscInteraction {
 			action = "['OnPull'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
 			toolTip=$STR_Icon_Pull;
 		};
+		class CTI_Icon_unflip : CTI_Icon_fpk {
+			idc = 511032;
+			x = "SafeZoneX + SafeZoneW*0.60";
+			text = "Rsc\Pictures\icon_push.paa";
+			action = "['onUnflipPressed'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'";
+			toolTip=$STR_Menu_Options_Unflip;
+		};
 		class CTI_Icon_pack : CTI_Icon_fpk {
 			idc = 511025;
 			x = "SafeZoneX + SafeZoneW*0.60";

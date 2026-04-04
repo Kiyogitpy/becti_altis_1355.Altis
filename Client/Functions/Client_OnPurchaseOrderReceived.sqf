@@ -115,7 +115,13 @@ if !(_req_classname isKindOf "Man") then {
 
 
 //--- Soft limit (skip for empty vehicles)
-if !(_process) then { if (((count units (group player))- ({isplayer _x} count units (group player))) <= CTI_PLAYERS_GROUPSIZE) then { _process = true }};
+if !(_process) then {
+	_group_units = units _group;
+	_group_players = {isPlayer _x} count _group_units;
+	_group_ai = (count _group_units) - _group_players;
+	_group_ai_limit = if (isPlayer leader _group) then {CTI_PLAYERS_GROUPSIZE} else {CTI_AI_TEAMS_GROUPSIZE};
+	if (_group_ai < _group_ai_limit) then { _process = true };
+};
 if !(_process) exitWith {
 	["SERVER", "Answer_Purchase", [_req_seed, _req_classname, _req_buyer, _factory]] call CTI_CO_FNC_NetSend ;
 	hint parseText format [localize "STR_OnPurchase_TooMuchUnits", _var_classname select CTI_UNIT_LABEL, _picture]; //--- Can't do it but we answer to the server.

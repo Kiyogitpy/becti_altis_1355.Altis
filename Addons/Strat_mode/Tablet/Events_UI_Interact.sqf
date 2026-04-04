@@ -426,8 +426,8 @@ switch (_action) do {
 			    	};
 			    };
 			    case 33: {// CTI_Icon_Exit Tutorial
-
-			    	if (!isNull TUTORIAL_EXIT && _target == TUTORIAL_EXIT) then {
+			    	_tutorial_exit = missionNamespace getVariable ["TUTORIAL_EXIT", objNull];
+			    	if (!isNull _tutorial_exit && {_target == _tutorial_exit}) then {
 			    		if ((CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false])) then {
 			    				((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,1,1];
 			    			} else {
@@ -678,6 +678,14 @@ switch (_action) do {
 	};
 	case "OnPush": {
 		if (speed _target <2 && speed _target >-2) then{[_target,player] execVM "Client\Actions\Action_Push.sqf"};
+		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf';
+	};
+	case "onUnflipPressed": { //--- Unflip the nearest vehicle
+		_vehicle = _target;
+		if (speed _vehicle < 5 && getPos _vehicle select 2 < 5) then {
+			_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1];
+			_vehicle setVelocity [0,0,1];
+		};
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf';
 	};
 	case "OnRepHQ": {

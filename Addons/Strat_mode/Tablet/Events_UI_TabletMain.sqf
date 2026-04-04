@@ -22,8 +22,8 @@ switch (_action) do {
 		//((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 130013) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafeZoneH * 0.845), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 130013) ctrlCommit 0;
 
 		};
-		if !(CTI_Base_ControlCenterInRange && Client_AN_Connected) then {
-			{((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl _x) ctrlEnable false} forEach [210003,210004,210005,210008,210009];
+		if !(CTI_Base_ControlCenterInRange) then {
+			{((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl _x) ctrlEnable false} forEach [210003,210004,210005,210009];
 		};
 		if (isnull (CTI_P_SideLogic getVariable "cti_commander")) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlshow false} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlshow true};
 		if !(call CTI_CL_FNC_IsPlayerCommander) then {

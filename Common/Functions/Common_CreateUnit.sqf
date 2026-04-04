@@ -96,8 +96,16 @@ _unit setSkill ["reloadspeed",_skill select 9];
 
 _unit enableFatigue false;
 
-//--- Disable crawling, units can only stand or crouch
-_unit setUnitTrait ["Prone", false];
+//--- Prevent AI infantry from going prone.
+if (!isPlayer _unit && {_unit isKindOf "Man"}) then {
+	_unit setUnitPos "MIDDLE";
+	_unit addEventHandler ["AnimChanged", {
+		params ["_aiUnit"];
+		if (alive _aiUnit && {!isPlayer _aiUnit} && {stance _aiUnit == "PRONE"}) then {
+			_aiUnit setUnitPos "MIDDLE";
+		};
+	}];
+};
 
 if (_unit isKindOf "I_Soldier_M_F") then {
 _rnd = random (1);

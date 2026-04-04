@@ -14,7 +14,7 @@
 #include "Addons\Strat_mode\res.hpp"
 #include "Addons\Henroth_AirLoadout\dialogs.hpp"
 
-loadScreen = "banner.jpg";
+loadScreen = "banner.jpeg";
 // ^HS^ for Headless Client
 joinUnassigned = 0;
 //disableChannels[]={0,3};

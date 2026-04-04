@@ -2,7 +2,13 @@
 // Array representation: [aimingAccuracy, aimingShake, aimingSpeed, spotDistance, spotTime, courage, commanding, general, endurance, reloadSpeed]
 // Script by Fluit and Bl1p
 
-_SkillLevel = if (count _this > 0) then { _this select 0;} else { random(4);};
+_SkillLevel = if (count _this > 0) then { _this select 0 } else { floor (random 6) };
+
+// Ensure switch branches always match by using an integer skill level in [0..5].
+if (typeName _SkillLevel != "SCALAR") then {_SkillLevel = 0};
+_SkillLevel = floor _SkillLevel;
+if (_SkillLevel < 0) then {_SkillLevel = 0};
+if (_SkillLevel > 5) then {_SkillLevel = 5};
 
 _skill = 0;
 _commanding = 0;
@@ -42,6 +48,11 @@ switch (_SkillLevel) do {
 			_skill = ((0.4) + _randomskill);
 			_commanding = 0.8;
 			_general = 0.5;
+	};
+	default {
+			_skill = 0.15 + _randomskill;
+			_commanding = 0.6;
+			_general = 0.2;
 	};
 };
 

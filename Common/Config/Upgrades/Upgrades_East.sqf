@@ -171,6 +171,13 @@ _lev=_lev+			[5];
 _lin=_lin+			[[[],[],[],[],[]]];
 _t=_t+				[[10*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO,80*CTI_UPGRADE_RATIO,160*CTI_UPGRADE_RATIO]];
 
+_l=_l+				[[localize "STR_Up_Captured", localize "STR_Up_Captured_Descr"]];
+_a=_a	+			[True];
+_c=_c +				[[40000]];
+_lev=_lev+			[1];
+_lin=_lin+			[[[CTI_UPGRADE_EXPI, 3]]];
+_t=_t+				[[120*CTI_UPGRADE_RATIO]];
+
 /*
 _l=_l+			[["Network: Reconfiguration cycle", "Lower Mesh Network reconfiguration cycle time (600s - 60s*lvl)"]];
 _a=_a	+			[false];

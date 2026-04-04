@@ -15,14 +15,21 @@ _unit=_this select 0;
 _weap=_this select 1;
 _ammo=_this select 4;
 _proj=_this select 6;
+_source = vehicle _unit;
+if (isNull _source) then { _source = _unit };
+_source_class = typeOf _source;
+
+_artillery_classes = missionNamespace getVariable ["CTI_ARTILLERY", []];
+_is_known_artillery = _source_class in _artillery_classes;
 
 private _allowedWeapons = [
 	"mortar_155mm_AMOS", "rockets_230mm_GAT", "mortar_82mm",
 	"rhs_weap_M252",    "rhs_weap_M119A2",  "rhs_weap_M109",   "rhs_weap_M777",
 	"rhs_weap_2b14",    "rhs_weap_2b11",    "rhs_weap_d30",    "rhs_weap_2s3",
-	"rhs_weap_bm21",    "rhs_weap_D30",     "rhs_weap_2S3"
+	"rhs_weap_bm21",    "rhs_weap_D30",     "rhs_weap_2S3",
+	"rhs_weap_2s1",     "rhs_weap_9k79"
 ];
-if !(_weap in _allowedWeapons) exitWith {false};
+if !(_is_known_artillery || (_weap in _allowedWeapons)) exitWith {false};
 
 //diag_log format [":: ART Radar ::%2:: starting handling %1", _this,_proj];
 {

@@ -5,7 +5,7 @@ switch (_action) do {
 	case "onLoad": {
 		CTI_P_LastRootMenu = "Commanding";
 
-		if !(CTI_Base_ControlCenterInRange && Client_AN_Connected) then {
+		if !(CTI_Base_ControlCenterInRange) then {
 			{((uiNamespace getVariable "cti_dialog_ui_commandmenu") displayCtrl _x) ctrlEnable false} forEach [210003,210004,210005,210009];
 		};
 
