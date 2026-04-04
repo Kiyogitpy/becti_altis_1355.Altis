@@ -141,6 +141,5 @@ if (_completion >= 100) then {
 };
 
 if !( isNil "ADMIN_ZEUS") then {
-	ADMIN_ZEUS addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof _structure));
-	ADMIN_ZEUS addCuratorEditableObjects [[_structure],true];
+	[ADMIN_ZEUS, _structure] call CTI_PVF_Server_Addeditable;
 };

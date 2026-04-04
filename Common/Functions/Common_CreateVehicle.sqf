@@ -78,10 +78,11 @@ _handle_fail_spawns = {
 				deleteVehicle _unit;
 			};
 		} else {
-			_unit setDammage 0;
+			_unit setDamage 0;
 			{
-				(_x select 0) setDammage 0;
+				(_x select 0) setDamage 0;
 			} forEach (fullCrew _unit);
+			0 // return 0 so Dammaged EH suppresses the hit in the same tick
 		};
 };
 
@@ -348,8 +349,7 @@ if !( isNil "ADMIN_ZEUS") then {
 	if !(CTI_isServer) then {
 		["SERVER", "Server_Addeditable",[ADMIN_ZEUS,_vehicle]] call CTI_CO_FNC_NetSend;
 	} else {
-		ADMIN_ZEUS addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof _vehicle));
-		ADMIN_ZEUS addCuratorEditableObjects [[_vehicle],true] ;
+		[ADMIN_ZEUS, _vehicle] call CTI_PVF_Server_Addeditable;
 	};
 };
 

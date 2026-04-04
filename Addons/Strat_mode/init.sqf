@@ -203,12 +203,43 @@ if (CTI_IsServer) then {
 
 
 		CTI_PVF_Server_Addeditable= {
-		(_this select 0) addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof (_this select 1)));
-    	(_this select 0) addCuratorEditableObjects [[_this select 1],true] ;
+		private ["_object", "_curators", "_addons"];
+		_object = _this select 1;
+		_curators = if !(isNil "CTI_ADMIN_ZEUS_LIST") then {CTI_ADMIN_ZEUS_LIST} else {
+			if !(isNil "ADMIN_ZEUS") then {[ADMIN_ZEUS]} else {[]}
+		};
+		_addons = configSourceAddonList (configFile >> "CfgVehicles" >> typeof _object);
+		{
+			if (!isNull _x) then {
+				_x addCuratorAddons _addons;
+				_x addCuratorEditableObjects [[_object],true];
+			};
+			true
+		} count _curators;
 		};
 
 		CTI_PVF_Server_Assign_Zeus= {
-  		_this  assignCurator ADMIN_ZEUS;
+	 		private ["_player", "_curators", "_assigned", "_slot"];
+			_player = _this;
+			if (isNull _player) exitWith {};
+			if !(isNull (getAssignedCuratorLogic _player)) exitWith {};
+
+			_curators = if !(isNil "CTI_ADMIN_ZEUS_LIST") then {CTI_ADMIN_ZEUS_LIST} else {
+				if !(isNil "ADMIN_ZEUS") then {[ADMIN_ZEUS]} else {[]}
+			};
+			if (count _curators == 0) exitWith {};
+
+			_slot = objNull;
+			{
+				if (isNull _slot) then {
+					_assigned = getAssignedCuratorUnit _x;
+					if (isNull _assigned || _assigned == _player) then {_slot = _x};
+				};
+				true
+			} count _curators;
+
+			if (isNull _slot) then {_slot = _curators select 0};
+			_player assignCurator _slot;
 		};
 
 		CTI_PVF_Server_Update_BL= {
@@ -340,9 +371,20 @@ if (CTI_IsServer) then {
 
 		// Zeus admin for players
 		if !( isNil "ADMIN_ZEUS") then {
+			if (isNil "CTI_ADMIN_ZEUS_LIST") then {
+				CTI_ADMIN_ZEUS_LIST = [ADMIN_ZEUS];
+				_extra_zeus = (createGroup sideLogic) createUnit ["ModuleCurator_F", getPosATL ADMIN_ZEUS, [], 0, "NONE"];
+				_extra_zeus addCuratorAddons activatedAddons;
+				CTI_ADMIN_ZEUS_LIST pushBack _extra_zeus;
+				publicVariable "CTI_ADMIN_ZEUS_LIST";
+			};
+
 			0 spawn {
 				while {!CTI_GameOver} do {
-					ADMIN_ZEUS addCuratorEditableObjects [playableUnits,true];
+					{
+						if (!isNull _x) then {_x addCuratorEditableObjects [playableUnits,true];};
+						true
+					} count (if !(isNil "CTI_ADMIN_ZEUS_LIST") then {CTI_ADMIN_ZEUS_LIST} else {[ADMIN_ZEUS]});
 					sleep 5;
 				};
 			};
@@ -394,7 +436,7 @@ if (CTI_IsClient) then {
 		waitUntil {!isNil "ADMIN_ZEUS"};
 		while {!CTI_GameOver} do {
 			if ((toLower (name player)) in ["kiyo", "catz"]) then {
-				if !((getAssignedCuratorUnit ADMIN_ZEUS) == player) then {
+				if (isNull (getAssignedCuratorLogic player)) then {
 					["SERVER", "Server_Assign_Zeus", player] call CTI_CO_FNC_NetSend;
 				};
 			};

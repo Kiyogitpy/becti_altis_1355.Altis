@@ -46,7 +46,7 @@ switch (_action) do {
 		};
 
 
-		if (!((getAssignedCuratorUnit ADMIN_ZEUS) == player) && (serverCommandAvailable '#shutdown' || !isMultiplayer)) then {
+		if (isNull (getAssignedCuratorLogic player) && (serverCommandAvailable '#shutdown' || !isMultiplayer)) then {
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlEnable true;
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlSetPosition [SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.76,SafeZoneY+safezoneH*(0.28+0.035*3),(3/4*SafeZoneH)*0.615*0.22,SafeZoneH * 0.03]; ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlCommit 0;
 		} else {

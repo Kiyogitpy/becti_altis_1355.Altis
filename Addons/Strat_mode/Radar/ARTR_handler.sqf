@@ -16,7 +16,13 @@ _weap=_this select 1;
 _ammo=_this select 4;
 _proj=_this select 6;
 
-if !(_weap == "mortar_155mm_AMOS" || _weap == "rockets_230mm_GAT" || _weap == "mortar_82mm") exitWith {false};
+private _allowedWeapons = [
+	"mortar_155mm_AMOS", "rockets_230mm_GAT", "mortar_82mm",
+	"rhs_weap_M252",    "rhs_weap_M119A2",  "rhs_weap_M109",   "rhs_weap_M777",
+	"rhs_weap_2b14",    "rhs_weap_2b11",    "rhs_weap_d30",    "rhs_weap_2s3",
+	"rhs_weap_bm21",    "rhs_weap_D30",     "rhs_weap_2S3"
+];
+if !(_weap in _allowedWeapons) exitWith {false};
 
 //diag_log format [":: ART Radar ::%2:: starting handling %1", _this,_proj];
 {

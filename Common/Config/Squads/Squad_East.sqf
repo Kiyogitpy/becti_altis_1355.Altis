@@ -24,7 +24,7 @@ missionNamespace setVariable [format["CTI_SQUADS_%1_KIND_AIR", _side], ["AirAtta
 
 _v = _v		+ ["Infantry"];
 _t = _t		+ ["Infantry"];
-_p = _p		+ [[["rhs_msv_rifleman", 5], ["rhs_msv_autorifleman", 2, 80], ["rhs_msv_medic", 1], ["rhs_msv_at", 1, 70], ["rhs_msv_grenadier", 2, 90], ["rhs_msv_marksman", 1, 70], ["rhs_msv_rifleman", 1, 55]]];
+_p = _p		+ [[["rhs_msv_emr_rifleman", 5], ["rhs_msv_emr_machinegunner", 2, 80], ["rhs_msv_emr_medic", 1], ["rhs_msv_emr_LAT", 1, 70], ["rhs_msv_emr_grenadier", 2, 90], ["rhs_vdv_marksman_asval", 1, 70], ["rhs_vdv_marksman", 1, 55]]];
 _f = _f		+ [CTI_BARRACKS];
 _m = _m		+ [500];
 _c = _c		+ ["Infantry"];
@@ -32,7 +32,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["InfantryAT"];
 _t = _t		+ ["Infantry - AT"];
-_p = _p		+ [[["rhs_msv_at", 5, 85], ["rhs_msv_medic", 1], ["rhs_msv_at", 3, 75], ["rhs_msv_at", 2, 70]]];
+_p = _p		+ [[["rhs_msv_emr_at", 5, 85], ["rhs_msv_emr_medic", 1], ["rhs_msv_emr_LAT", 3, 75], ["rhs_msv_emr_at", 2, 70]]];
 _f = _f		+ [CTI_BARRACKS];
 _m = _m		+ [800];
 _c = _c		+ ["InfantryAT"];
@@ -40,7 +40,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["InfantryAA"];
 _t = _t		+ ["Infantry - AA"];
-_p = _p		+ [[["rhs_msv_aa", 5, 85], ["rhs_msv_medic", 1], ["rhs_msv_at", 2, 60]]];
+_p = _p		+ [[["rhs_msv_emr_aa", 5, 85], ["rhs_msv_emr_medic", 1], ["rhs_msv_emr_LAT", 2, 60]]];
 _f = _f		+ [CTI_BARRACKS];
 _m = _m		+ [800];
 _c = _c		+ ["InfantryAA"];
@@ -48,7 +48,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["InfantryRanged"];
 _t = _t		+ ["Infantry - Snipers"];
-_p = _p		+ [[["rhs_msv_marksman", 2], ["rhs_msv_rifleman", 1]]];
+_p = _p		+ [[["rhs_vdv_marksman_asval", 2], ["rhs_vdv_marksman", 1]]];
 _f = _f		+ [CTI_BARRACKS];
 _m = _m		+ [900];
 _c = _c		+ ["InfantryAdvanced"];
@@ -64,7 +64,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["Motorized"];
 _t = _t		+ ["Motorized - MPRAP"];
-_p = _p		+ [[["rhs_tigr_m_50cal", 3], ["rhs_tigr_m_crows_mk19", 2, 75]]];
+_p = _p		+ [[["rhsgref_BRDM2_msv", 3], ["rhs_tigr_sts_msv", 2, 75]]];
 _f = _f		+ [CTI_LIGHT];
 _m = _m		+ [1200];
 _c = _c		+ ["Motorized"];
@@ -72,7 +72,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["Mechanized"];
 _t = _t		+ ["Mechanized - APC"];
-_p = _p		+ [[["rhs_btr80a_msv", 1], ["rhs_bmp2d_msv", 1, 50]]];
+_p = _p		+ [[["rhs_btr80_msv", 1], ["rhs_btr80a_msv", 1, 50]]];
 _f = _f		+ [CTI_HEAVY];
 _m = _m		+ [2500];
 _c = _c		+ ["Mechanized"];
@@ -88,7 +88,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["Armored"];
 _t = _t		+ ["Armored - MBT"];
-_p = _p		+ [[["rhs_t90a_tv", 1], ["rhs_t72ba_tv", 1, 50]]];
+_p = _p		+ [[["rhs_t72be_tv", 1], ["rhs_t90_tv", 1, 50]]];
 _f = _f		+ [CTI_HEAVY];
 _m = _m		+ [6500];
 _c = _c		+ ["Armored"];
@@ -96,7 +96,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["AntiAir"];
 _t = _t		+ ["Armored - Anti Air"];
-_p = _p		+ [[["rhs_zsu234_msv", 1]]];
+_p = _p		+ [[["rhs_zsu234_aa", 1]]];
 _f = _f		+ [CTI_HEAVY];
 _m = _m		+ [8500];
 _c = _c		+ ["AntiAir"];
@@ -104,7 +104,7 @@ _s = _s		+ [[]];
 
 _v = _v		+ ["AirAttack"];
 _t = _t		+ ["Air - Attack"];
-_p = _p		+ [[["rhs_mi28n_vvs", 1]]];
+_p = _p		+ [[["RHS_Mi24V_vdv", 1]]];
 _f = _f		+ [CTI_AIR];
 _m = _m		+ [25000];
 _c = _c		+ ["Air"];

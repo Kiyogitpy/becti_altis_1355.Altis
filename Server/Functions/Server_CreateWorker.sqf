@@ -67,6 +67,6 @@ removeAllWeapons _worker;
 _worker disableAI "TARGET";
 _worker disableAI "AUTOTARGET";
 
-if !( isNil "ADMIN_ZEUS") then {ADMIN_ZEUS addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof _worker)); ADMIN_ZEUS addCuratorEditableObjects [[_worker],true];};
+if !( isNil "ADMIN_ZEUS") then {[ADMIN_ZEUS, _worker] call CTI_PVF_Server_Addeditable;};
 
 [_side, _worker] execFSM "Server\FSM\update_worker.fsm";
