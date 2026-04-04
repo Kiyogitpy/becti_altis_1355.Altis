@@ -12,7 +12,7 @@ briefingName = "RHS Jammy Warfare - Altis";
 
 //--- ArmA 3 Specifics
 dev = "Benny";
-author = "Benny; Modified by Zerty, HTom, Yoshi_E [JMW]";
+author = "Benny; Modified by Zerty, HTom, Yoshi_E [JMW], Kiyo";
 // overviewPicture
 
 //--- Properties.
