@@ -5,7 +5,8 @@ _towns = []+CTI_Towns;
 
 _number = ceil ((count _towns)/6);
 
-SM_ST_PARAM=[["AT",_number],["AA",_number]];
+// Spawn only AT static sentries; AA sentries created lone missile specialists across towns.
+SM_ST_PARAM=[["AT",_number]];
 
 SM_ST_Groups=[];
 

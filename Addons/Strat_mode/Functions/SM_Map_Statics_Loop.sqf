@@ -12,6 +12,8 @@ while {!CTI_GameOver} do
 
 		//rearm
 		{
+			// Remove legacy AA static sentries from previous versions.
+			if ((typeOf _x) == "I_Soldier_AA_F") then {deleteVehicle _x};
 			_x setAmmo [secondaryWeapon  _x, 1000000];
 			if ((typeOf _x )== "I_Soldier_AT_F" && count (backpackItems _x) ==0 ) then {
 				_x addItemToBackpack "Titan_AT";

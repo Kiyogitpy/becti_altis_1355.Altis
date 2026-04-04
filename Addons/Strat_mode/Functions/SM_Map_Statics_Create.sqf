@@ -11,12 +11,13 @@ switch (_type) do
 {
 	case "AA":
 	{
+		private _aaFallbackClass = missionNamespace getVariable ["GUER_SOLDIER_MARKSMAN", missionNamespace getVariable ["GUER_SOLDIER", "I_G_Soldier_F"]];
 		//Find location
 		_pos=[getpos _town,2000,800,150] call BIS_fnc_findOverwatch;
 		// Create vehicle
 		for "_i" from 0 to 0 step 1 do
 		{
-			_veh = ["I_Soldier_AA_F", _group, _pos, resistance, true] call CTI_CO_FNC_CreateUnit;
+			_veh = [_aaFallbackClass, _group, _pos, resistance, true] call CTI_CO_FNC_CreateUnit;
 			_veh setformdir  (random(360));
 			removeUniform _veh;
 			_veh forceAddUniform "U_I_GhillieSuit";
