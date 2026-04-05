@@ -62,10 +62,5 @@ if (CTI_SM_FAR == 1) then {
 
 CTI_P_Repairing = false;
 
-//--- Equip RHS NVG on spawn/respawn only when NONV mode is disabled.
-if ((missionNamespace getVariable ["CTI_SM_NONV", 0]) == 0 && (hmd player) == "") then {
-	_nvg_class = if (CTI_P_SideJoined == east) then {"rhs_1PN138"} else {"rhsusf_ANPVS_15"};
-	player linkItem _nvg_class;
-};
 
 player setVariable ["CTI_UID",getPlayerUID player, true];

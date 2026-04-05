@@ -2014,7 +2014,7 @@
 				<Russian>ST LOAD :: Обьект Выгружен : %1 из %2 </Russian>
 			</Key>
 			<Key ID="STR_ST_NotFound">
-				<Original>ST LOAD :: No Static/Crate found, it must be behind your offroad/van</Original>
+				<Original>ST LOAD :: No Static/Crate found, it must be behind your offroad/truck</Original>
 				<Russian>ST LOAD :: Нет обьектов, позади вашей машины, которые можно загрузить</Russian>
 			</Key>
 	</Package>
@@ -2246,8 +2246,8 @@
 				<Russian>Технологии AAF</Russian>
 			</Key>
 			<Key ID="STR_Up_AAF_technologies_Descr">
-				<Original>Unlock AAF units (1::MRAPS, VANS and BOAT, 2::APC, 3::TRACKED, 4::CHOPPERS, 5::PLANES, 6::ARTILLERY)</Original>
-				<Russian>Разблокировать технику AAF (1::Легкая Техника, фургоны и лодка, 2::БТР 3::БМП, Танки 4::Вертолёты, 5::Самолёты, 6::АРТИЛЛЕРИЯ)</Russian>
+				<Original>Unlock AAF units (1::MRAPS and VANS, 2::APC, 3::TRACKED, 4::CHOPPERS, 5::PLANES, 6::ARTILLERY)</Original>
+				<Russian>Разблокировать технику AAF (1::Легкая Техника и фургоны, 2::БТР 3::БМП, Танки 4::Вертолёты, 5::Самолёты, 6::АРТИЛЛЕРИЯ)</Russian>
 			</Key>
 			<Key ID="STR_Up_Aircraft_FFAR">
 				<Original>Air: Aircraft FFAR</Original>
@@ -2376,14 +2376,6 @@
 			<Key ID="STR_Up_Respawn_Truck_Descr">
 				<Original>Increase the max range of the respawn truck. 500m + lvl x 500m </Original>
 				<Russian>Увеличивает макс. дальность появления на Мед.Грузовиках и контейнерах: 500м + Ур.Улучш x 500м</Russian>
-			</Key>
-			<Key ID="STR_Up_Captured">
-				<Original>Captured Technology</Original>
-				<Russian>Захваченные технологии</Russian>
-			</Key>
-			<Key ID="STR_Up_Captured_Descr">
-				<Original>Unlock enemy non-barracks factory units. Normal factory upgrades are still required.</Original>
-				<Russian>Открывает вражеские юниты не из казарм. Обычные улучшения заводов все равно требуются.</Russian>
 			</Key>
 			<Key ID="STR_Up_Data">
 				<Original>Network: Advanced Data Link</Original>

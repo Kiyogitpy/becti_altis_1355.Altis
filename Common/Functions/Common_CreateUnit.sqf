@@ -77,8 +77,9 @@ if (_unit isKindOf "Man") then {
 //_unit setSkill (0.3 + (random 0.5));//tbd tweak
 //--- bl1p and fluit rnd skills START
 
-// Call the function with random skill level per unit (0-5)
-_skill = [] call CTI_CO_FNC_GetRandomSkill;
+// Call the function
+_AISkill = missionNamespace getVariable "CTI_AI_SKILL";
+_skill = [_AISkill] call CTI_CO_FNC_GetRandomSkill;
 
 
 // Set the skills
@@ -96,18 +97,7 @@ _unit setSkill ["reloadspeed",_skill select 9];
 
 _unit enableFatigue false;
 
-//--- Prevent AI infantry from going prone.
-if (!isPlayer _unit && {_unit isKindOf "Man"}) then {
-	_unit setUnitPos "MIDDLE";
-	_unit addEventHandler ["AnimChanged", {
-		params ["_aiUnit"];
-		if (alive _aiUnit && {!isPlayer _aiUnit} && {stance _aiUnit == "PRONE"}) then {
-			_aiUnit setUnitPos "MIDDLE";
-		};
-	}];
-};
-
-if (_unit isKindOf "I_Soldier_M_F") then {
+/*if (_unit isKindOf "I_Soldier_M_F") then {
 _rnd = random (1);
 if (_rnd > 0.7) then {
 	comment "Exported from Arsenal by [H] Tom";
@@ -207,7 +197,7 @@ if (_rnd > 0.8) then {
 	_unit setSpeaker "male04gre";
 	[_unit,"AAF_3rdRegiment"] call bis_fnc_setUnitInsignia;
 	};
-};
+};*/
 
 //Ad event handle to UAV operators
 _unit addEventHandler ["WeaponAssembled",{[["CLIENT",side (_this select 1)], "Client_UAVSetFuel",(_this select 1),true] call CTI_CO_FNC_NetSend;}];

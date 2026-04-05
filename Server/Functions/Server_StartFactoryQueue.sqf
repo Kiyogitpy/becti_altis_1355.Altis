@@ -26,7 +26,7 @@
 	  -> Will create a queue for _factory and listen to the incoming requests until none remains
 */
 
-private ["_factory", "_is_present", "_list", "_req_buyer", "_req_classname", "_req_seed", "_req_side", "_req_target", "_req_time", "_req_time_out", "_req_toai", "_req_veh_infos", "_request", "_thread_id"];
+private ["_factory", "_list", "_req_buyer", "_req_classname", "_req_seed", "_req_side", "_req_time", "_req_time_out", "_req_toai", "_request", "_thread_id"];
 
 _factory = _this;
 _factory setVariable ["cti_inuse", true, true];
@@ -77,11 +77,8 @@ while { alive _factory } do {
 		//--- the request is no longer in queu, the client has ended it's job.
 		_is_present = false;
 
-		_req_seed_check = _req_seed;
-		_req_classname_check = _req_classname;
-		_req_time_check = _req_time;
 		{
-			if ((_x select 0) == _req_seed_check && (_x select 1) == _req_classname_check && (_x select 2) == _req_time_check) exitWith {_is_present = true};
+			if ((_x select 0) == _req_seed && (_x select 1) == _req_classname && (_x select 2) == _req_time) exitWith {_is_present = true};
 		} forEach (_factory getVariable "cti_queue_processing");
 
 		if (time > _req_time_out || !_is_present) exitWith { //--- Request timed out or the client already finished processing it's order.

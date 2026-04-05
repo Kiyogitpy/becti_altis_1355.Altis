@@ -1,10 +1,3 @@
-waitUntil {
-    !isNil "CTI_CO_FNC_GetSideFromID" &&
-    {!isNil "CTI_CO_FNC_GetSideLogic"} &&
-    {!isNil "CTI_CO_FNC_GetSideHQ"} &&
-    {!isNil "CTI_SE_FNC_OnTownCaptured"}
-};
-
 diag_log " :: SAVE :: Trying to load";
 _towns = profileNamespace getVariable ["CTI_SAVE_TOWNS",[]];
 if (count _towns == count CTI_TOWNS) then  {

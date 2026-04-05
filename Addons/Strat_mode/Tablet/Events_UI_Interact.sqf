@@ -255,7 +255,7 @@ switch (_action) do {
 			    	};
 			    };
 			    case 19: { // CTI_Icon_load //ok
-			    	if (vehicle player != player && driver vehicle player ==player && (_target iskindof "I_G_Offroad_01_F" || _target iskindOf "B_G_Van_02_vehicle_F" || _target iskindOf "O_G_Van_02_vehicle_F") && speed _target <1 && speed _target >-1 && alive _target &&  !(missionNameSpace getVariable ["STATIC_TRY",false])) then  {
+			    	if (vehicle player != player && driver vehicle player ==player && (_target iskindof "rhs_kamaz5350_flatbed_msv" || _target iskindOf "rhsusf_M1084A1P2_D_fmtv_usarmy" || _target iskindOf "rhsusf_M1084A1P2_WD_fmtv_usarmy" || _target iskindOf "O_G_Van_02_vehicle_F") && speed _target <1 && speed _target >-1 && alive _target &&  !(missionNameSpace getVariable ["STATIC_TRY",false])) then  {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
 			    		_offset=_offset+1;
@@ -321,7 +321,7 @@ switch (_action) do {
 			    case 25: { // CTI_Icon_pack
 			    	_hqs=[];
 					//{_hqs set [count _hqs, _x call CTI_CO_FNC_GetSideHQ];true} count [east,west];
-			    	if (vehicle player == player && !(player getvariable ["REV_UNC",false]) && (_target iskindof "Tank" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F" || (typeof _target) in ["Land_Pod_Heli_Transport_04_box_F","B_Slingload_01_Cargo_F"])&& alive _target && !(_target in _hqs || _target isKindOf "UGV_02_Base_F")) then  {
+			    	if (vehicle player == player && !(player getvariable ["REV_UNC",false]) && (_target iskindof "Tank" || _target iskindof "Wheeled_APC_F" || _target iskindof "Truck_F" || (typeof _target) in ["Land_Pod_Heli_Transport_04_box_black_F","B_Slingload_01_Cargo_F"])&& alive _target && !(_target in _hqs || _target isKindOf "UGV_02_Base_F")) then  {
 			    		if (({alive _x} count (crew _target) == 0) && abs (speed _target) <1 && locked _target <2 ) then {
 			    			((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		} else {
@@ -336,7 +336,7 @@ switch (_action) do {
 			    };
 			    case 26: { // CTI_Icon_attach
 			    	if (vehicle player != player && driver vehicle player ==player && (typeof _target) == "O_Heli_Transport_04_F"  ) then  {
-			    		if (isNull (getSlingLoad _target) || !((typeof (getSlingLoad _target)) in ["Land_Pod_Heli_Transport_04_fuel_F","Land_Pod_Heli_Transport_04_ammo_F","Land_Pod_Heli_Transport_04_bench_F","Land_Pod_Heli_Transport_04_box_F","Land_Pod_Heli_Transport_04_covered_F","Land_Pod_Heli_Transport_04_repair_F","Land_Pod_Heli_Transport_04_medevac_F"])) then {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];} else {
+			    		if (isNull (getSlingLoad _target) || !((typeof (getSlingLoad _target)) in ["Land_Pod_Heli_Transport_04_fuel_black_F","Land_Pod_Heli_Transport_04_ammo_black_F","Land_Pod_Heli_Transport_04_bench_black_F","Land_Pod_Heli_Transport_04_box_black_F","Land_Pod_Heli_Transport_04_covered_black_F","Land_Pod_Heli_Transport_04_repair_black_F","Land_Pod_Heli_Transport_04_medevac_black_F"])) then {((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0.3,0.3,0.3,1];} else {
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [0,0,1,1];
 			    		};
 			    		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetPosition [_base_x+(_offset*_base_w),_base_y+_h_offset*_base_h,_base_w,_base_h];
@@ -426,8 +426,8 @@ switch (_action) do {
 			    	};
 			    };
 			    case 33: {// CTI_Icon_Exit Tutorial
-			    	_tutorial_exit = missionNamespace getVariable ["TUTORIAL_EXIT", objNull];
-			    	if (!isNull _tutorial_exit && {_target == _tutorial_exit}) then {
+
+			    	if (_target isKindOf "Land_UH1H_Wreck_F") then {
 			    		if ((CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false])) then {
 			    				((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (511000+_i)) ctrlSetTextColor [1,1,1,1];
 			    			} else {
@@ -567,13 +567,6 @@ switch (_action) do {
 		((uiNamespace getVariable "cti_dialog_ui_interractions") displayCtrl (510103)) ctrlcommit 0;
 	};
 	case "OnLock": {
-		if (isMultiplayer && {!local _target}) then {
-			private ["_timeout"];
-			["SERVER", "Request_Locality", [_target, player]] call CTI_CO_FNC_NetSend;
-			_timeout = time + 3;
-			waitUntil {isNull _target || !alive _target || local _target || time > _timeout};
-		};
-		if (isNull _target || !alive _target || !local _target) exitWith {false};
 		if (locked _target >0 ) then {_target lock 0;} else {_target lock 2};
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf'
 	};
@@ -680,14 +673,6 @@ switch (_action) do {
 		if (speed _target <2 && speed _target >-2) then{[_target,player] execVM "Client\Actions\Action_Push.sqf"};
 		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf';
 	};
-	case "onUnflipPressed": { //--- Unflip the nearest vehicle
-		_vehicle = _target;
-		if (speed _vehicle < 5 && getPos _vehicle select 2 < 5) then {
-			_vehicle setPos [getPos _vehicle select 0, getPos _vehicle select 1, 1];
-			_vehicle setVelocity [0,0,1];
-		};
-		['onLoad'] call compile preprocessFileLineNumbers 'Addons\Strat_mode\Tablet\Events_UI_Interact.sqf';
-	};
 	case "OnRepHQ": {
 		CTI_P_LastRepairTime = time;
 		[_target,player] execVM "Client\Actions\Action_RepairHQ.sqf";
@@ -777,13 +762,7 @@ switch (_action) do {
 	case "OnPilot": {
 		closedialog 0;
 		if (locked _target < 2) then {
-			if (isNull (driver _target)) then {
-				if (isMultiplayer && {!local _target}) then {
-					["SERVER", "Request_Locality", [_target, player]] call CTI_CO_FNC_NetSend;
-					waitUntil {isNull _target || !alive _target || local _target};
-				};
-				if (!isNull _target && alive _target && locked _target < 2 && isNull (driver _target)) then {player moveInDriver _target};
-			} else {0 spawn {hint "There is already a pilot"; sleep 3; hintSilent "";};};
+			if (isNull (driver _target)) then {player moveInDriver _target} else {0 spawn {hint "There is already a pilot"; sleep 3; hintSilent "";};};
 		};
 	};
 	case "OnHalo": {

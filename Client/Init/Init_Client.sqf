@@ -5,9 +5,6 @@
 
 NET_LOG=false;
 
-//--- Auto-clear script cache on mission start (for faster development/testing)
-uiNamespace setVariable ["BIS_fnc_reloadScript_cache", []];
-
 CTI_P_SideJoined = side player;
 
 CTI_P_EnemySide = If (side player == WEST) then {EAST} else {WEST};
@@ -108,11 +105,7 @@ if (isMultiplayer) then {
 };
 
 
-waitUntil {
-	!isNil "CTI_P_SideLogic" &&
-	{!isNull CTI_P_SideLogic} &&
-	{CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED", false]}
-};
+waitUntil {CTI_P_SideLogic getVariable ["CTI_LOAD_COMPLETED",false]};
 
 
 
@@ -132,10 +125,6 @@ call compile preprocessFile "Client\Functions\UI\Functions_UI_SatelliteCamera.sq
 call compile preprocessFile "Client\Functions\UI\Functions_UI_ServiceMenu.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UnitsCamera.sqf";
 call compile preprocessFile "Client\Functions\UI\Functions_UI_UpgradeMenu.sqf";
-
-if (isNil "RHS_Weapons") then {
-	call compile preprocessFileLineNumbers "Common\Classes\rhs_item_class.sqf";
-};
 
 if (CTI_P_SideJoined == west) then {(west) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_West.sqf"};
 if (CTI_P_SideJoined == east) then {(east) call compile preprocessFileLineNumbers "Common\Config\Gear\Gear_East.sqf"};
@@ -303,24 +292,14 @@ if (missionNamespace getVariable "CTI_TROPHY_APS" == 1) then {
 };
 
 if ((missionNamespace getVariable "CTI_UNITS_FATIGUE") == 0) then {player enableFatigue false} else  {player enableFatigue true}; //--- Disable the unit's fatigue
-
-//--- Suppress weapon sway by resetting stamina
-0 spawn {
-	while {alive player} do {
-		player setFatigue 0;
-		sleep 0.1;
-	};
-};
-
 ["SERVER", "Request_NoobLogger", [player,0]] call CTI_CO_FNC_NetSend;
 0 execVM "Addons\MapMarkersTitling.sqf";
-0 execVM "Client\Functions\Client_LaserTeamMarkers.sqf";
 0 execFSM "Addons\Strat_mode\FSM\dynamic_group.fsm";
 
 CTI_Init_Client = true;
 
 
-12452 cutText ["", "BLACK IN", 2];
+12452 cutText [localize "STR_Begin_Tutorial", "BLACK IN", 7];
 
 
 0 call TUTORIAL_RUN;

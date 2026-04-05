@@ -41,7 +41,7 @@ _lin=_lin+	[[[]]];
 _t=_t+			[[90*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[[localize "STR_Up_AAF_technologies", localize "STR_Up_AAF_technologies_Descr"]];
-_a=_a	+			[true];
+_a=_a	+			[false];
 _c=_c +			[[1500,2500,4000,6000,8000,12000]];
 _lev=_lev+	[6];
 _lin=_lin+	[[[CTI_UPGRADE_LIGHT,1],[],[CTI_UPGRADE_HEAVY,1],[CTI_UPGRADE_AIR,1],[],[]]];
@@ -87,7 +87,7 @@ _lin=_lin+	[[[],[],[]]];
 _t=_t+			[[20*CTI_UPGRADE_RATIO, 40*CTI_UPGRADE_RATIO, 60*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[[localize "STR_Up_Tactical_Hud", localize "STR_Up_Tactical_Hud_Descr"]];
-_a=_a	+			[True];
+_a=_a	+			[false];
 _c=_c +			[[9000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[CTI_UPGRADE_GEAR,3]]];
@@ -105,7 +105,7 @@ _a=_a	+			[true];
 _c=_c +			[[100000]];
 _lev=_lev+	[1];
 _lin=_lin+	[[[CTI_UPGRADE_AIR, 1]]];
-_t=_t+			[[240*CTI_UPGRADE_RATIO]];
+_t=_t+			[[120*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[[localize "STR_Up_Halo_Jump", localize "STR_Up_Halo_Jump_Descr"]];
 _a=_a	+			[True];
@@ -140,8 +140,8 @@ _l=_l+			[[localize "STR_Up_Intrusion", localize "STR_Up_Intrusion_Descr"]];
 _a=_a	+			[true];
 _c=_c +			[[2000,6000,12000]];
 _lev=_lev+	[3];
-_t=_t+			[[10*CTI_UPGRADE_RATIO,30*CTI_UPGRADE_RATIO,60*CTI_UPGRADE_RATIO]];
 _lin=_lin+	[[[CTI_UPGRADE_NETR, 1],[CTI_UPGRADE_NETR, 2],[CTI_UPGRADE_NETR, 3]]];
+_t=_t+			[[10*CTI_UPGRADE_RATIO,30*CTI_UPGRADE_RATIO,60*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[[localize "STR_Up_Data", localize "STR_Up_Data_Descr"]];
 _a=_a	+			[True];
@@ -152,14 +152,14 @@ _t=_t+			[[60*CTI_UPGRADE_RATIO]];
 
 
 _l=_l+			[[localize "STR_Up_Trophy", localize "STR_Up_Trophy_Descr"]];
-_a=_a	+			[True];
+_a=_a	+			[false];
 _c=_c +			[[6000,12000]];
 _lev=_lev+	[2];
 _lin=_lin+	[[[CTI_UPGRADE_TRA, 1],[]]];
 _t=_t+			[[20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO]];
 
 _l=_l+			[[localize "STR_Up_Max_Ammos", localize "STR_Up_Max_Ammos_Descr"]];
-_a=_a	+			[True];
+_a=_a	+			[false];
 _c=_c +			[[6000,12000]];
 _lev=_lev+	[2];
 _lin=_lin+	[[[CTI_UPGRADE_HEAVY, 1],[]]];
@@ -171,13 +171,6 @@ _c=_c +				[[1000,2000,4000,8000,16000]];
 _lev=_lev+			[5];
 _lin=_lin+			[[[],[],[],[],[]]];
 _t=_t+				[[10*CTI_UPGRADE_RATIO,20*CTI_UPGRADE_RATIO,40*CTI_UPGRADE_RATIO,80*CTI_UPGRADE_RATIO,160*CTI_UPGRADE_RATIO]];
-
-_l=_l+				[[localize "STR_Up_Captured", localize "STR_Up_Captured_Descr"]];
-_a=_a	+			[True];
-_c=_c +				[[40000]];
-_lev=_lev+			[1];
-_lin=_lin+			[[[CTI_UPGRADE_EXPI, 3]]];
-_t=_t+				[[120*CTI_UPGRADE_RATIO]];
 
 /*
 _l=_l+			[["Network: Reconfiguration cycle", "Lower Mesh Network reconfiguration cycle time (600s - 60s*lvl)"]];

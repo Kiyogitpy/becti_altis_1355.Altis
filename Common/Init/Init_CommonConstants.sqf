@@ -107,7 +107,7 @@ CTI_AI_TEAMS_UNITS_MIN = 5; //--- Amount of units an AI leader need to have to b
 //--- AI Teams: Parameters
 with missionNamespace do {
 	//CTI_AI_TEAMS_GROUPSIZE = 12; //--- AI Teams may get up to x units
-	if (isNil 'CTI_AI_TEAMS_ENABLED') then {CTI_AI_TEAMS_ENABLED = 3}; //--- Determine whether AI Teams are enabled or not
+	if (isNil 'CTI_AI_TEAMS_ENABLED') then { if !(isMultiplayer) then {CTI_AI_TEAMS_ENABLED = 3} else {CTI_AI_TEAMS_ENABLED = 0}}; //--- Determine whether AI Teams are enabled or not
 	if (isNil 'CTI_AI_TEAMS_GROUPSIZE') then {CTI_AI_TEAMS_GROUPSIZE = 8};
 };
 //-----------------------------------------------------------------------------------------------------------------------//
@@ -239,7 +239,6 @@ CTI_UPGRADE_DATA = 			18;
 CTI_UPGRADE_TRT = 			19;
 CTI_UPGRADE_TRA = 			20;
 CTI_UPGRADE_REST = 			21;
-CTI_UPGRADE_CAPTURED = 	22;
 //-----------------------------------------------------------------------------------------------------------------------//
 
 
@@ -420,7 +419,7 @@ CTI_BASE_PURCHASE_UNITS_RANGE = 150; //--- Determine how far a player has to be 
 CTI_BASE_PURCHASE_UNITS_RANGE_CC = 7500; //--- Determine how far a player has to be from a factory to access the Factory Menu with CC
 
 //--- Base: Workers
-CTI_BASE_WORKERS_BUILD_COEFFICIENT = 10; //--- Worker build speed multiplier (<coefficient> / (<structure build time> / 100)), higher is faster.
+CTI_BASE_WORKERS_BUILD_COEFFICIENT = 1; //--- Worker build speed multiplier (<coefficient> / (<structure build time> / 100)), higher is faster.
 CTI_BASE_WORKERS_BUILD_RANGE = 20; //--- Worker minimal build distance.
 CTI_BASE_WORKERS_LIMIT = 10; //--- Maximum amount of worker which may be purchased by a side
 CTI_BASE_WORKERS_PRICE = 300; //--- Worker price.
@@ -433,7 +432,7 @@ CTI_BASE_WORKERS_WANDER_RANGE_MAX = 225; //--- Worker may wander no further than
 
 //--- Base: Parameters
 with missionNamespace do {
-	if (isNil 'CTI_BASE_AREA_MAX') then {CTI_BASE_AREA_MAX = if (ISLAND != 1) then {3} else {2};};
+	if (isNil 'CTI_BASE_AREA_MAX') then {CTI_BASE_AREA_MAX = if (ISLAND != 1) then {4} else {3};};
 	if (isNil 'CTI_BASE_AREA_RANGE') then {CTI_BASE_AREA_MAX = if (ISLAND != 1) then {250} else {100};};
 	if (isNil 'CTI_BASE_FOB_MAX') then {CTI_BASE_FOB_MAX = 4}; //--- Maximum amount of FOBs which a side may place
 	if (isNil 'CTI_BASE_HQ_REPAIR') then {CTI_BASE_HQ_REPAIR = 1}; //--- Determine whether the HQ can be repaired or not
@@ -469,7 +468,7 @@ with missionNamespace do {
 //CTI_VEHICLES_BOUNTY = 0.15; //--- Bounty upon entity killed.
 CTI_VEHICLES_EMPTY_SCAN_PERIOD = 15; //--- Scan for a crew member in a vehicle each x seconds
 CTI_VEHICLES_HANDLER_EMPTY = 0; //--- Determine how an empty vehicle is handled by the engine (0: Typical delay, 1: delay AND the unit cannot move/fire)
-CTI_VEHICLES_HOOKERS = ["B_Heli_Transport_01_F", "O_Heli_Light_02_unarmed_F", "B_Boat_Armed_01_minigun_F", "O_Boat_Armed_01_hmg_F"]; //--- Vehicle which may lift things (not actual hookers btw)
+CTI_VEHICLES_HOOKERS = ["RHS_Mi8T_vdv", "B_Boat_Armed_01_minigun_F", "O_Boat_Armed_01_hmg_F"]; //--- Vehicle which may lift things (not actual hookers btw)
 CTI_VEHICLES_HOOKERS_EX = ["B_SDV_01_F", "O_SDV_01_F"]; //--- Vehicle which may lift things including wrecks
 //CTI_VEHICLES_HOOKERS_EX = [];
 
@@ -555,7 +554,7 @@ CTI_HALO_COOLDOWN = 20*60;
 CTI_HALO_LASTTIME=-CTI_HALO_COOLDOWN;
 CTI_HALO_ALTITUDE = 3000;
 CTI_HALO_RATIO = 3;
-CTI_UPGRADE_RATIO = if (ISLAND != 1) then {3.5} else {1};
+CTI_UPGRADE_RATIO = if (ISLAND != 1) then {7} else {2};
 
 
 CTI_VOTE_RATIO=0.51;
@@ -573,9 +572,9 @@ with missionNamespace do {
 	CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_WEST = 0.3;
 	CTI_ECONOMY_POOL_RESOURCES_PERCENTAGE_EAST = 0.3;
 
-	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_EAST') then {CTI_ECONOMY_STARTUP_FUNDS_EAST = 9000000};
+	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_EAST') then {CTI_ECONOMY_STARTUP_FUNDS_EAST = 900};
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER') then {CTI_ECONOMY_STARTUP_FUNDS_EAST_COMMANDER = 900000};
-	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_WEST') then {CTI_ECONOMY_STARTUP_FUNDS_WEST = 9000000};
+	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_WEST') then {CTI_ECONOMY_STARTUP_FUNDS_WEST = 900};
 	if (isNil 'CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER') then {CTI_ECONOMY_STARTUP_FUNDS_WEST_COMMANDER = 900000};
 
 	// CTI_ECONOMY_STARTUP_FUNDS_EAST = 80000;
@@ -597,7 +596,7 @@ with missionNamespace do {
 
 	if (isNil 'CTI_MARKERS_INFANTRY') then {CTI_MARKERS_INFANTRY = 1}; //--- Track infantry on map
 
-	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 0}; //--- Fatigue disabled by default (0: Disabled, 1: Enabled)
+	if (isNil 'CTI_UNITS_FATIGUE') then {CTI_UNITS_FATIGUE = 1};
 
 	if (isNil 'CTI_WEATHER_FAST') then {CTI_WEATHER_FAST = 3};
 	if (isNil 'CTI_WEATHER_FAST_NIGTH') then {CTI_WEATHER_FAST_NIGTH = 1};
@@ -607,7 +606,7 @@ with missionNamespace do {
 	if (isNil 'CTI_AI_SKILL') then {CTI_AI_SKILL = 4}; //Done
 	//--- zerty parameters
 
-	if (isNil 'CTI_BASEBUILDING') then {CTI_BASEBUILDING = 2}; //DOn
+	if (isNil 'CTI_BASEBUILDING') then {CTI_BASEBUILDING = 1}; //DOn
 	if (isNil 'CTI_TEAMSWAP') then {CTI_TEAMSWAP = 1}; //DOn
 	if (isNil 'CTI_TEAMSTACK') then {CTI_TEAMSTACK = 1}; //DOn
 	if (isNil 'CTI_MAX_MISSION_TIME') then {CTI_MAX_MISSION_TIME = 0}; //DOne
@@ -636,7 +635,7 @@ with missionNamespace do {
 	if (isNil "CTI_SM_HALO") then {CTI_SM_HALO=1};
 	if (isNil "CTI_SM_RADAR") then {CTI_SM_RADAR=1};
 	if (isnil "CTI_SM_FAR") then {CTI_SM_FAR = 1};
-	if (isnil "CTI_SM_NONV") then {CTI_SM_NONV = 0};
+	if (isnil "CTI_SM_NONV") then {CTI_SM_NONV = 1};
 	if (isnil "CTI_SM_PATROLS") then {CTI_SM_PATROLS = 0};
 	if (isnil "CTI_SM_PATROLS_NUMBER") then {CTI_SM_PATROLS_NUMBER = 1};
 	if (isnil "CTI_SM_TCAS") then {CTI_SM_TCAS = 200};

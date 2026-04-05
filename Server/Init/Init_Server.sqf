@@ -84,14 +84,6 @@ _attempts = 0;
 _real_attempts = 0;
 _asked= missionNamespace getVariable "CTI_BASE_STARTUP_PLACEMENT";
 waitUntil {CTI_InitTowns};
-waitUntil {
-	CTI_Init_Common &&
-	{!isNil "CTI_CO_FNC_GetSideID"} &&
-	{!isNil "CTI_CO_FNC_CreateVehicle"} &&
-	{!isNil "CTI_CO_FNC_EquipVehicleCargoSpace"} &&
-	{!isNil "CTI_CO_FNC_OnHQHandleDamage"} &&
-	{!isNil "CTI_CO_FNC_GetSideLogic"}
-};
 _eastLocation=CENTER_POS;
 _westLocation=CENTER_POS;
 while {(_eastLocation distance _westLocation) <(_asked)*0.95 ||(_eastLocation distance _westLocation) >( _asked)*1.25 || {(_x distance _eastLocation)<600} count CTI_Towns>0 || {(_x distance _westLocation)<600} count CTI_Towns>0 ||(_eastLocation distance CENTER_POS) > ( _asked)*0.75 ||(_westLocation distance CENTER_POS) > ( _asked)*0.75 } do {
@@ -136,73 +128,6 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 	if (CTI_BASE_NOOBPROTECTION == 1) then {
 		_hq addEventHandler ["handleDamage", format["[_this select 2, _this select 3, %1] call CTI_CO_FNC_OnHQHandleDamage", _sideID]]; //--- You want that on public
 	};
-
-	//--- Customize West HQ with 2A72 cannon (keep coaxial M2, remove Mk19)
-	if (_side == west && typeOf _hq == "rhsusf_M1117_W") then {
-		_hq animateSource ["duke_hide", 1];
-		_hq removeWeaponTurret ["RHS_MK19", [0]];
-		//--- Remove all Mk19 magazines
-		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M430A1", [0]];
-		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M430A1", [0]];
-		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M430A1", [0]];
-		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M430A1", [0]];
-		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M430A1", [0]];
-		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M430A1", [0]];
-		_hq removeMagazineTurret ["RHS_96Rnd_40mm_MK19_M1001", [0]];
-		//--- Add 2A72 with correct ammo
-		_hq addWeaponTurret ["rhs_weap_2a72", [0]];
-		_hq addMagazineTurret ["rhs_mag_3ubr11_150", [0]];
-		_hq addMagazineTurret ["rhs_mag_3ubr11_150", [0]];
-		_hq addMagazineTurret ["rhs_mag_3uof8_150", [0]];
-		_hq addMagazineTurret ["rhs_mag_3uof8_150", [0]];
-	};
-
-
-	//--- Spawn additional vehicles near HQ
-	private ["_additional_vehicles", "_vehicle_pos", "_startup_equipment", "_preferred", "_fallback"];
-	_additional_vehicles = [];
-	switch (_side) do {
-		case west: {
-			_preferred = ["rhsgref_hidf_m113a3_mk19"];
-			_fallback = ["B_MRAP_01_F"];
-		};
-		case east: {
-			_preferred = ["rhs_tigr_sts_vv"];
-			_fallback = ["O_MRAP_02_F"];
-		};
-	};
-
-	for "_i" from 0 to ((count _preferred) - 1) do {
-		_cls = _preferred select _i;
-		if !(isClass (configFile >> "CfgVehicles" >> _cls)) then {
-			_cls = _fallback select _i;
-			diag_log format ["[INIT] Missing startup vehicle class %1 for side %2, using fallback %3", _preferred select _i, _side, _cls];
-		};
-		_additional_vehicles pushBack _cls;
-	};
-
-	{
-		_vehicle_pos = [_startPos, 15 + (_forEachIndex * 10), random 360] call BIS_fnc_relPos;
-		_safe_pos = _vehicle_pos findEmptyPosition [0, 60, _x];
-		if (count _safe_pos > 0) then {_vehicle_pos = _safe_pos};
-		_vehicle = [_x, _vehicle_pos, random 360, _side, false, true, true] call CTI_CO_FNC_CreateVehicle;
-		_vehicle setVariable ["cti_occupant", _side, true];
-		
-		// Equip the main supply vehicle with startup gear
-		if (_forEachIndex == 0) then {
-			_startup_equipment = [];
-			{
-				_equipment = _x select 1;
-				_startup_equipment = _startup_equipment + _equipment;
-			} forEach (missionNamespace getVariable format["CTI_%1_Vehicles_Startup", _side]);
-			
-			if (count _startup_equipment > 0) then {
-				[_vehicle, _startup_equipment] call CTI_CO_FNC_EquipVehicleCargoSpace;
-			};
-		};
-		
-		[_vehicle] spawn CTI_SE_FNC_HandleEmptyVehicle;
-	} forEach _additional_vehicles;
 
 
 
@@ -264,12 +189,7 @@ while {! (((getMarkerPos format ["HELO_START_%1", _i])select 0) == 0)} do
 	_teams = [];
 
 	0 spawn {
-		waitUntil {
-			CTI_Init_Server &&
-			{!isNil "CTI_CO_FNC_GetSideLogic"} &&
-			{!isNil "CTI_CO_FNC_GetSideID"} &&
-			{!isNil "CTI_CO_FNC_EquipUnit"}
-		};
+		waitUntil {CTI_Init_Server};
 		while {! CTi_GameOver} do {
 			{
 				_unit=_x;
@@ -371,12 +291,6 @@ if (( missionNamespace getVariable [ "CTI_BASE_DEFENSES_AUTO_LIMIT",0]) >0) then
 
 if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 	waitUntil {!isNil 'CTI_InitTowns'};
-	waitUntil {
-		!isNil "CTI_CO_FNC_GetSideLogic" &&
-		{!isNil "CTI_CO_FNC_GetSideHQ"} &&
-		{!isNil "CTI_CO_FNC_GetSideStructures"} &&
-		{!isNil "CTI_CO_FNC_GetSideFromID"}
-	};
 	sleep 10; // prenvent loading without all town FSM stable
 	if (profileNamespace getvariable ["CTI_SAVE_ENABLED",false]) then {
 		0 call PERS_LOAD;
@@ -396,11 +310,6 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 		};
 	};
 } else {
-	waitUntil {
-		!isNil "CTI_CO_FNC_GetSideLogic" &&
-		{!isNil "CTI_CO_FNC_GetSideHQ"} &&
-		{!isNil "CTI_CO_FNC_GetSideStructures"}
-	};
 	CTI_Init_Server=True;
 	{
 		    _side=_x;
@@ -410,15 +319,8 @@ if (missionNamespace getvariable "CTI_PERSISTANT" == 1) then {
 
 };
 
-
 //Logging of varius values
 0 spawn {
-		waitUntil {
-			!isNil "CTI_CO_FNC_GetSideLogic" &&
-			{!isNil "CTI_CO_FNC_GetSideHQ"} &&
-			{!isNil "CTI_CO_FNC_GetSideCommander"} &&
-			{!isNil "CTI_CO_FNC_GetSideTownCount"}
-		};
 		sleep 100; //wait for everything to finish loading
 		_version = 4; //version of DiscordBot logReader
 		_arr = 	[["CTI_DataPacket", "Header"],

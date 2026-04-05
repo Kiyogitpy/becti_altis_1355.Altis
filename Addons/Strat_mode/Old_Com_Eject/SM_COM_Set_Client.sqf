@@ -11,7 +11,8 @@ CTI_P_SideLogic setvariable ["CTI_COM_VOTES",[],true];
 		player reveal _hq;
 		if (isMultiplayer) then {["SERVER", "Request_HQLocality", [CTI_P_SideJoined, player]] call CTI_CO_FNC_NetSend};
 		waitUntil {local _hq};
-		_hq lock 0;
+		_hq lock 2;
+		_hq addAction ["<t color='#86F078'>Unlock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 2'];
 		_hq addAction ["<t color='#86F078'>Lock</t>","Client\Actions\Action_ToggleLock.sqf", [], 99, false, true, '', '_this != player &&alive _target && locked _target == 0'];
 		_hq spawn {
 			sleep 1;

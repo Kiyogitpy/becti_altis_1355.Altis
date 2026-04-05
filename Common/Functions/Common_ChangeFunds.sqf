@@ -37,7 +37,7 @@ private ["_funds", "_group", "_side", "_value"];
 
 _group = _this select 0;
 _side = _this select 1;
-_value = if (count _this > 2) then { _this select 2 } else { 0 };
+_value = _this select 2;
 
 if ((_side call CTI_CO_FNC_GetSideCommander) == _group) then {
 	//--- Change the commander's funds

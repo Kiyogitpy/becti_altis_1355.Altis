@@ -1,27 +1,8 @@
 
-if (
-	isNil {missionNamespace getVariable "CTI_UI_Respawn_LoadLocations"} ||
-	isNil {missionNamespace getVariable "CTI_UI_Respawn_GetAvailableLocations"} ||
-	isNil {missionNamespace getVariable "CTI_UI_Respawn_GetRespawnLabel"}
-) then {
-	call compile preprocessFileLineNumbers "Client\Functions\UI\Functions_UI_RespawnMenu.sqf";
-};
-
-if (
-	isNil {missionNamespace getVariable "CTI_UI_Respawn_LoadLocations"} ||
-	isNil {missionNamespace getVariable "CTI_UI_Respawn_GetAvailableLocations"} ||
-	isNil {missionNamespace getVariable "CTI_UI_Respawn_GetRespawnLabel"}
-) exitWith {
-	diag_log ":: Respawn GUI :: Missing CTI_UI_Respawn_* functions after compile attempt";
-};
-
-_fn_respawn_get_available_locations = missionNamespace getVariable "CTI_UI_Respawn_GetAvailableLocations";
-_fn_respawn_load_locations = missionNamespace getVariable "CTI_UI_Respawn_LoadLocations";
-
 while { true } do {
 	if (isNil {uiNamespace getVariable "cti_dialog_ui_respawnmenu"}) exitWith {}; //--- Menu is closed.
 
-	_locations = call _fn_respawn_get_available_locations;
+	_locations = call CTI_UI_Respawn_GetAvailableLocations;
 	_locations_tracker = uiNamespace getVariable "cti_dialog_ui_respawnmenu_locations_tracker";
 
 	//--- A Minimap click has been performed.
@@ -62,7 +43,7 @@ while { true } do {
 		};
 	} forEach +_locations_tracker;
 	*/
-	if (_changes) then { call _fn_respawn_load_locations };
+	if (_changes) then { call CTI_UI_Respawn_LoadLocations };
 
 	sleep .1;
 };

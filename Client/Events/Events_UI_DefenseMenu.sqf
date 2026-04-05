@@ -10,11 +10,9 @@ switch (_action) do {
 		if (isNil 'CTI_P_DefensesAutoManning') then { CTI_P_DefensesAutoManning = false };
 		_def_count=count (units ((CTI_P_SideLogic getVariable ["cti_defensive_team",grpNull])));
 		if (CTI_P_DefensesAutoManning) then {
-			ctrlSetText [200004, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]];
-			((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004) ctrlSetBackgroundColor [0.768627451, 1, 0.137254902, 0.7];
+			ctrlSetText [200004, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]]
 		} else {
-			ctrlSetText [200004, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]];
-			((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004) ctrlSetBackgroundColor [1, 0, 0, 0.7];
+			ctrlSetText [200004, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]]
 		};
 		if !(call CTI_CL_FNC_IsPlayerCommander) then { ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004) ctrlEnable false; };
 
@@ -64,11 +62,9 @@ switch (_action) do {
 		CTI_P_DefensesAutoManning = !CTI_P_DefensesAutoManning;
 		_def_count=count (units ((CTI_P_SideLogic getVariable ["cti_defensive_team",grpNull])));
 		if (CTI_P_DefensesAutoManning) then {
-			ctrlSetText [200004, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]];
-			((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004) ctrlSetBackgroundColor [0.768627451, 1, 0.137254902, 0.7];
+			ctrlSetText [200004, format [localize "STR_Defenses_On",ctrlText ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]]
 		} else {
-			ctrlSetText [200004, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]];
-			((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004) ctrlSetBackgroundColor [1, 0, 0, 0.7];
+			ctrlSetText [200004, format [localize "STR_Defenses_Off",ctrlText ((uiNamespace getVariable "cti_dialog_ui_defensemenu") displayCtrl 200004),_def_count,CTI_BASE_DEFENSES_AUTO_LIMIT]]
 		};
 	};
 	case "onUndoDefense": {

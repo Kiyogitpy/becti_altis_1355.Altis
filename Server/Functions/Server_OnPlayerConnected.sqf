@@ -32,14 +32,14 @@ _id = _this select 2;
 ["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] has joined the current session", _name, _uid]] call CTI_CO_FNC_Log;
 if (_name == '__SERVER__' || _uid == '') exitWith {}; //--- We don't care about the server!
 
-waitUntil {!isNil 'CTI_Init_Common' && !isNil "CTI_CO_FNC_NetSend"};
+waitUntil {!isNil 'CTI_Init_Common'};
 
 
 //Find Unit
 //==========
 _try=0;
 _unit=objnull;
-while {_try < 10 && (isNull _unit || !((side _unit) in [east,west]))} do {
+while {isNull _unit && !((side _unit) in [east,west]) && _try <10} do {
 	//waitUntil {! isnull (_uid call BIS_fnc_getUnitByUid)};
 	sleep 10;
 	{
@@ -63,14 +63,6 @@ _unit setDamage 0;
 if !(isNull assignedVehicle _unit) then { unassignVehicle _unit; [_unit] orderGetIn false; [_unit] allowGetIn false };
 
 _side=side _unit;
-if !(_side in [east,west]) then {
-	_get_saved = missionNamespace getVariable [format["CTI_SERVER_CLIENT_%1", _uid], ["", civilian, -1, grpNull]];
-	_saved_side = _get_saved select 1;
-	if (_saved_side in [east,west]) then {
-		_side = _saved_side;
-		["WARNING", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] side not ready on connect, fallback to saved side [%2]", _name, _side]] call CTI_CO_FNC_Log;
-	};
-};
 //_default_funds = (missionNamespace getVariable format ["CTI_ECONOMY_STARTUP_FUNDS_%1", _side]);
 ["INFORMATION", "FILE: Server\Functions\Server_OnPlayerConnected.sqf", format["Player [%1] [%2] sanitized", _name, _side]] call CTI_CO_FNC_Log;
 //Save data

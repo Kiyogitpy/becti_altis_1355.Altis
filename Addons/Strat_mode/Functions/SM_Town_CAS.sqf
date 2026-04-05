@@ -13,6 +13,12 @@ SM_TCAS_MAINLOOP=compile '
 	if (_fly == "FLY") then {_pos=[_town,1500,2500] call CTI_CO_FNC_GetRandomPosition; _pos set [2,1750];};
 	_dir=[_pos, _town] call CTI_CO_FNC_GetDirTo;
 	_v=[_type, _pos, _dir, resistance, true, true, true, _fly] call CTI_CO_FNC_CreateVehicle;
+	if (_v isKindOf "rhsgref_cdf_mig29s") then {
+		_v setPylonLoadout ["pylon1", "rhs_mag_b8m1_bd3_umk2a_s8kom"];
+		_v setPylonLoadout ["pylon2", "rhs_mag_b8m1_bd3_umk2a_s8kom"];
+		_v setPylonLoadout ["pylon3", "rhs_mag_b8m1_bd3_umk2a_s8df"];
+		_v setPylonLoadout ["pylon4", "rhs_mag_b8m1_bd3_umk2a_s8df"];
+	};
 
 	[_v,_group] call bis_fnc_spawncrew;
 	if !( isNil "ADMIN_ZEUS") then { ADMIN_ZEUS addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof _v)); ADMIN_ZEUS addCuratorEditableObjects [([_v]),true];};
@@ -57,10 +63,12 @@ SM_TCAS_CREATE=compile '
 	_rn= random (1);
 	_cas="";
 	if (_rn > 0.95 && _rn <= 1) then {
-		_cas = [_town, "rhs_l39_cdf","FLY"] call SM_TCAS_MAINLOOP;
+		_veh = selectRandom ["rhsgref_cdf_mig29s", "rhsgref_cdf_su25"];
+		_cas = [_town, _veh,"FLY"] call SM_TCAS_MAINLOOP;
 	};
 	if (_rn >= 0.90 && _rn <= 0.95) then {
-		_cas = [_town, "rhs_l39_cdf","FLY"] call SM_TCAS_MAINLOOP;
+		_veh = selectRandom ["rhs_l159_CDF", "rhsgref_cdf_Mi24D_early"];
+		_cas = [_town, _veh,"FLY"] call SM_TCAS_MAINLOOP;
 	};
 	if (_rn < 0.90) then {
 		_cas = [_town, "rhsgref_cdf_reg_Mi17Sh","FORM"] call SM_TCAS_MAINLOOP;

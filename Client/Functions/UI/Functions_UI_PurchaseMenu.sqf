@@ -56,7 +56,7 @@ CTI_UI_Purchase_GetFirstAvailableFactories = {
 };
 
 CTI_UI_Purchase_FillUnitsList = {
-	private ["_aaf_air_units", "_enemy_side", "_type", "_units", "_var"];
+	private ["_type", "_var"];
 	_type = _this;
 
 	lnbClear ((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007);
@@ -69,28 +69,6 @@ CTI_UI_Purchase_FillUnitsList = {
 		default {-1};
 	};
 	_upgrades = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideUpgrades;
-	_units = +(missionNamespace getVariable [format ["CTI_%1_%2Units", CTI_P_SideJoined, _type], []]);
-
-	//--- Captured tech unlocks enemy factory lists except barracks.
-	if (_type != CTI_BARRACKS && (count _upgrades > CTI_UPGRADE_CAPTURED) && ((_upgrades select CTI_UPGRADE_CAPTURED) > 0)) then {
-		_enemy_side = if (CTI_P_SideJoined == west) then {east} else {west};
-		{
-			if !(_x in _units) then { _units pushBack _x };
-		} forEach (missionNamespace getVariable [format ["CTI_%1_%2Units", _enemy_side, _type], []]);
-	};
-
-	//--- AAF level 5 unlock adds AAF light jets to East/West air factory lists.
-	if (
-		_type == CTI_AIR
-		&& CTI_P_SideJoined in [west, east]
-		&& (count _upgrades > CTI_UPGRADE_AAF)
-		&& ((_upgrades select CTI_UPGRADE_AAF) >= 5)
-	) then {
-		_aaf_air_units = ['rhs_l39_cdf', 'rhs_l159_CDF'];
-		{
-			if !(_x in _units) then { _units pushBack _x };
-		} forEach _aaf_air_units;
-	};
 
 	{
 		_var = missionNamespace getVariable _x;
@@ -99,7 +77,7 @@ CTI_UI_Purchase_FillUnitsList = {
 			//--- Upgradeable?
 			_load = true;
 			if (_upgrade > -1 || CTI_Debug) then {
-				if (_upgrades select _upgrade < _var select CTI_UNIT_UPGRADE) then {_load = false};
+				if (_upgrades select (_var select 5) < _var select CTI_UNIT_UPGRADE) then {_load = false};
 			};
 
 			if (_load) then {
@@ -119,7 +97,7 @@ CTI_UI_Purchase_FillUnitsList = {
 				((uiNamespace getVariable "cti_dialog_ui_purchasemenu") displayCtrl 111007) lnbSetPictureColor [[_row, 0],[1,1,1,1]];
 			};
 		};
-	} forEach _units;
+	} forEach (missionNamespace getVariable format ["CTI_%1_%2Units", CTI_P_SideJoined, _type]);
 };
 
 CTI_UI_Purchase_CenterMap = {

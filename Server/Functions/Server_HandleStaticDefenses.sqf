@@ -30,16 +30,6 @@
 
 private ["_side","_logic","_sideID","_net","_man_timeout","_defs","_defense_team","_nearest_b","_var","_direction","_distance","_position","_ai","_ammo_trucks","_nearest"];
 
-waitUntil {
-	!isNil "CTI_CO_FNC_GetSideLogic" &&
-	{!isNil "CTI_CO_FNC_GetSideID"} &&
-	{!isNil "CTI_CO_FNC_GetSideStructures"} &&
-	{!isNil "CTI_CO_FNC_GetClosestStructure"} &&
-	{!isNil "CTI_CO_FNC_GetLiveUnits"} &&
-	{!isNil "CTI_CO_FNC_CreateUnit"} &&
-	{!isNil "CTI_CO_FNC_GetNearestSpecialVehicles"}
-};
-
 
 _side= _this;
 _logic = (_side) call CTI_CO_FNC_GetSideLogic;

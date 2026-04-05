@@ -24,10 +24,9 @@ if (CTI_isClient) then {
 			{
 				_u=_x;
 				{
-					if (_x in _restrict) then {
-						_u unlinkItem _x;
-						_u removeWeapon _x;
-					};
+				 if (getText(configFile >> 'CfgWeapons' >> _x >> 'simulation') == 'NVGoggles') then {
+				 	_u removeWeapon _x;
+				 };
 				}forEach assignedItems _u;
 			} forEach units group player;
 			sleep 1;
@@ -38,16 +37,13 @@ if (CTI_isClient) then {
 
 if (CTI_IsServer) then {
 	_func2={
-		private ["_restrict_srv"];
-		_restrict_srv = ["NVGoggles"];
 		while {!CTI_GameOver} do {
 			{
 				_u=_x;
 				if (local _u) then {
 
 					{
-						if (_x in _restrict_srv) then {
-							_u unlinkItem _x;
+					 if (getText(configFile >> 'CfgWeapons' >> _x >> 'simulation') == "NVGoggles") then {
 							_u removeWeapon _x;
 						};
 					}forEach assignedItems _u;

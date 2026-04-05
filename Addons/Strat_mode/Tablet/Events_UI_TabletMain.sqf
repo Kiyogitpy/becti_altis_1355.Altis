@@ -22,8 +22,8 @@ switch (_action) do {
 		//((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 130013) ctrlSetPosition [SafeZoneX + (SafeZoneW * 0.21), SafeZoneY + (SafeZoneH * 0.845), SafeZoneW * 0.28, SafeZoneH * 0.04]; ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 130013) ctrlCommit 0;
 
 		};
-		if !(CTI_Base_ControlCenterInRange) then {
-			{((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl _x) ctrlEnable false} forEach [210003,210004,210005,210009];
+		if !(CTI_Base_ControlCenterInRange && Client_AN_Connected) then {
+			{((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl _x) ctrlEnable false} forEach [210003,210004,210005,210008,210009];
 		};
 		if (isnull (CTI_P_SideLogic getVariable "cti_commander")) then {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlshow false} else {((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210020) ctrlshow true};
 		if !(call CTI_CL_FNC_IsPlayerCommander) then {
@@ -46,7 +46,7 @@ switch (_action) do {
 		};
 
 
-		if (isNull (getAssignedCuratorLogic player) && (serverCommandAvailable '#shutdown' || !isMultiplayer)) then {
+		if (!((getAssignedCuratorUnit ADMIN_ZEUS) == player) && (serverCommandAvailable '#shutdown' || !isMultiplayer)) then {
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlEnable true;
 			((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlSetPosition [SafeZoneX + (SafeZoneW - (3/4*SafeZoneH))/2+ (3/4*SafeZoneH) *0.191+(3/4*SafeZoneH)*0.615*0.76,SafeZoneY+safezoneH*(0.28+0.035*3),(3/4*SafeZoneH)*0.615*0.22,SafeZoneH * 0.03]; ((uiNamespace getVariable "cti_dialog_ui_tabletmain") displayCtrl 210019) ctrlCommit 0;
 		} else {

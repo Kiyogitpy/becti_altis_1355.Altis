@@ -27,11 +27,7 @@
 
 private ["_delay", "_timeout", "_vehicle"];
 
-if (isNil "_this" || {typeName _this != "ARRAY"} || {(count _this) == 0}) exitWith {};
-
 _vehicle = _this select 0;
-if (isNil "_vehicle" || {typeName _vehicle != "OBJECT"} || {isNull _vehicle}) exitWith {};
-
 _delay = if (count _this > 1) then {_this select 1} else {missionNamespace getVariable "CTI_VEHICLES_EMPTY_TIMEOUT"};
 Diag_log format [":: HANDLE :: Starting empty vehicle loop for %1",_vehicle];
 _timeout = time;

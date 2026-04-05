@@ -1,11 +1,34 @@
 private ["_pos","_spawn_at","_hq","_structures"];
 
-missionNamespace setVariable ["TUTO_COMPLETE", true];
 
+
+// init player put in tutorial area
 player allowDamage false;
 [player] joinsilent grpNull;
+_oh = player addAction ["<t color='#86F078'>Online Help</t>", {createDialog "CTI_RscTabletOnlineHelpMenu";}];
+_pos=getMarkerPos "CTI_TUTORIAL";
+_pos = [_pos,5,20] call CTI_CO_FNC_GetRandomPosition;
+player setPos _pos;
 
+
+//no escape from spawn
+0 spawn {
+	while {!((profileNamespace getVariable ["TUTO_COMPLETE",false]) || missionNamespace getVariable ["TUTO_COMPLETE",false])} do {
+		if (([player,getMarkerPos "CTI_TUTORIAL"] call  BIS_fnc_distance2D)> 42.5) then {
+			_pos=getMarkerPos "CTI_TUTORIAL";
+			_pos = [_pos,5,20] call CTI_CO_FNC_GetRandomPosition;
+			player setPos _pos;
+		};
+		sleep 5;
+	};
+};
+//==
+waitUntil {(profileNamespace getVariable ["TUTO_COMPLETE",false]) || missionNamespace getVariable ["TUTO_COMPLETE",false]};
 waitUntil {!isNil {CTI_P_SideLogic getVariable "cti_structures"} && !isNil {CTI_P_SideLogic getVariable "cti_hq"}};
+
+12452 cutText [localize "STR_End_Tutorial", "PLAIN", 0];
+sleep 1;
+player removeAction _oh;
 
 _spawn_at=objNull;
 
@@ -22,22 +45,9 @@ if (!(CTI_P_Jailed)) then { // if not jailed
 	// FIND initial position
 	while {isNull _spawn_at} do {
 		_hq = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideHQ;
-		_nearby_side_vehicles = nearestObjects [_hq, ["LandVehicle", "Air", "Ship"], 120];
-		_nearby_side_vehicles = _nearby_side_vehicles select {
-			alive _x &&
-			{(_x getVariable ["cti_occupant", sideUnknown]) == CTI_P_SideJoined} &&
-			{canMove _x}
-		};
 		_structures = (CTI_P_SideJoined) call CTI_CO_FNC_GetSideStructures;
-		if (count _nearby_side_vehicles > 0) then {
-			_spawn_at = [_hq, _nearby_side_vehicles] call CTI_CO_FNC_GetClosestEntity;
-		} else {
-			_spawn_at = _hq;
-			if (count _structures > 0) then {
-				_spawn_at = [_hq, _structures] call CTI_CO_FNC_GetClosestEntity;
-				if (isnull _spawn_at) then { _spawn_at = _hq; };
-			};
-		};
+		_spawn_at = _hq;
+		if (count _structures > 0) then {  _spawn_at = [_hq, _structures] call CTI_CO_FNC_GetClosestEntity; if (isnull _spawn_at) then { _spawn_at=_hq;} };
 		sleep 1;
 	};
 

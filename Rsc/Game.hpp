@@ -4,15 +4,15 @@ respawnDelay = 10;
 respawnDialog = false;
 
 //--- Require briefing.html to show up.
-onLoadMission = "RHS Jammy Warfare - Altis";
+onLoadMission = "BECTI - Zerty/HTom/Yoshi_E 1.3.5.5 - RHS";
 onLoadMissionTime = false;
-onLoadName = "RHS Jammy Warfare - Altis";
+onLoadName = "BECTI Altis RHS";
 
-briefingName = "RHS Jammy Warfare - Altis";
+briefingName = "BECTI - Zerty/HTom/Yoshi_E 1.3.5.5 - RHS";
 
 //--- ArmA 3 Specifics
 dev = "Benny";
-author = "Benny; Modified by Zerty, HTom, Yoshi_E [JMW], Kiyo";
+author = "Benny; Modified by Zerty, HTom, Yoshi_E [JMW]";
 // overviewPicture
 
 //--- Properties.

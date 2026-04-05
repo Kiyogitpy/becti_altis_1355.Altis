@@ -17,38 +17,13 @@ with missionNamespace do {
 		_pv_who publicVariableClient "CTI_NetCom";
 	};
 
-	//--- Fallback for missions that call addEditable before Strat_mode initializes.
-	if (isNil "CTI_PVF_Server_Addeditable") then {
-		CTI_PVF_Server_Addeditable = {
-			private ["_curator", "_curators", "_object", "_addons"];
-			_curator = _this param [0, objNull];
-			_object = _this param [1, objNull];
-			if (isNull _object) exitWith {};
-
-			_curators = if !(isNil "CTI_ADMIN_ZEUS_LIST") then {
-				CTI_ADMIN_ZEUS_LIST
-			} else {
-				if (!isNull _curator) then {[_curator]} else {[]}
-			};
-
-			_addons = configSourceAddonList (configFile >> "CfgVehicles" >> typeOf _object);
-			{
-				if (!isNull _x) then {
-					_x addCuratorAddons _addons;
-					_x addCuratorEditableObjects [[_object], true];
-				};
-				true
-			} count _curators;
-		};
-	};
-
 	CTI_PVF_Request_HQLocality = {
 		private ["_hq", "_side", "_target"];
 		_side = _this select 0;
 		_target = _this select 1;
 
 		_hq = (_side) call CTI_CO_FNC_GetSideHQ;
-		if (isnull _target) then {_hq setOwner 0; _hq lock 2;} else {_hq setOwner (owner _target); _hq lock 0;};
+		if (isnull _target) then {_hq setOwner 0} else {_hq setOwner (owner _target)};
 	};
 
 	CTI_PVF_Request_Locality = {

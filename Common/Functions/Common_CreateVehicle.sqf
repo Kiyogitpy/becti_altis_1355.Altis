@@ -78,11 +78,10 @@ _handle_fail_spawns = {
 				deleteVehicle _unit;
 			};
 		} else {
-			_unit setDamage 0;
+			_unit setDammage 0;
 			{
-				(_x select 0) setDamage 0;
+				(_x select 0) setDammage 0;
 			} forEach (fullCrew _unit);
-			0 // return 0 so Dammaged EH suppresses the hit in the same tick
 		};
 };
 
@@ -246,8 +245,26 @@ if (isNull _created) then {
 		_vehicle setVelocity [0,0,1];
 	};
 
-	//Spawn with components [H]Tom
-	if (_vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank") then {
+	//Spawn with components and paints [H]Tom
+	if (_side == CTI_RESISTANCE_ID && (_vehicle isKindOf "rhsgref_ins_g_t72ba" || _vehicle isKindOf "rhsgref_ins_g_t72bb")) then {
+		_vehicle setvariable ['rhs_t72_disableFlag', true]; // remove Flag
+	};
+	if (_side == CTI_EAST_ID && (_vehicle isKindOf "rhsgref_cdf_reg_uaz_dshkm" || _vehicle isKindOf "rhsgref_cdf_reg_uaz_ags" || _vehicle isKindOf "rhsgref_cdf_reg_uaz_spg9")) then {
+		[_vehicle, ["standard",1], nil] call BIS_fnc_initVehicle; // paint cdf uaz to standard
+	};
+	if (_side == CTI_EAST_ID && (_vehicle isKindOf "O_UGV_01_F" || _vehicle isKindOf "O_UGV_01_rcws_F")) then {
+		[_vehicle, ["Olive",1], nil] call BIS_fnc_initVehicle; // paint redfor UGV to green
+	};
+	if (_side == CTI_WEST_ID && (_vehicle isKindOf "rhsusf_stryker_m1126_m2_d" || _vehicle isKindOf "rhsusf_stryker_m1126_mk19_d" || _vehicle isKindOf "rhsusf_stryker_m1127_m2_d" || _vehicle isKindOf "rhsusf_stryker_m1132_m2_d" || _vehicle isKindOf "rhsusf_stryker_m1134_d")) then {
+		[_vehicle, ["Tan",1], nil] call BIS_fnc_initVehicle; // paint desert stryker to sand
+	};
+	if (_side == CTI_WEST_ID && (_vehicle isKindOf "rhsusf_mrzr4_d") && ISLAND == 6) then {
+		[_vehicle, ["Olive",1], nil] call BIS_fnc_initVehicle; // paint to olive on livonia
+	};
+	if (_side == CTI_WEST_ID && (_vehicle isKindOf "rhsusf_M1078A1R_SOV_M2_D_fmtv_socom" || _vehicle isKindOf "rhsusf_M1238A1_socom_d" || _vehicle isKindOf "rhsusf_M1238A1_M2_socom_d" || _vehicle isKindOf "rhsusf_M1238A1_Mk19_socom_d" || _vehicle isKindOf "rhsusf_M1239_socom_d" || _vehicle isKindOf "rhsusf_M1239_M2_socom_d" || _vehicle isKindOf "rhsusf_M1239_MK19_socom_d") && ISLAND == 6) then {
+		[_vehicle, ["rhs_woodland",1], nil] call BIS_fnc_initVehicle; // paint to woodland on livonia
+	};
+	/*if (_vehicle isKindOf "Wheeled_APC_F" || _vehicle isKindOf "Tank") then {
 		if (_vehicle isKindOf "I_APC_Wheeled_03_cannon_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_APC_Wheeled_02_rcws_v2_F" || _vehicle isKindOf "O_T_APC_Wheeled_02_rcws_v2_ghex_F") then {[_vehicle, nil, ["showTools",1]] call BIS_fnc_initVehicle;};
 		if (_vehicle isKindOf "O_MBT_02_arty_F" || _vehicle isKindOf "O_T_MBT_02_arty_ghex_F") then {[_vehicle, nil, ["showLog",1]] call BIS_fnc_initVehicle;};
@@ -260,7 +277,7 @@ if (isNull _created) then {
 		if (_side == CTI_RESISTANCE_ID) then {
 			[_vehicle, FALSE, ["showcamonethull", 0.2, "showcamonetturret", 0.2, "showcamonetcannon", 0.2, "showslathull", 0.2]] call BIS_fnc_initVehicle; // Res: 20% chance for camo net and slat cage
 		};
-	};
+	};*/
 	if (_vehicle isKindOf "Offroad_01_base_F") then {
 		_offroads = ["I_G_Offroad_01_F", "I_G_Offroad_01_armed_F", "I_G_Offroad_01_AT_F", "B_G_Offroad_01_F", "B_G_Offroad_01_armed_F", "B_G_Offroad_01_AT_F", "O_G_Offroad_01_F", "O_G_Offroad_01_armed_F", "O_G_Offroad_01_AT_F"];
 		if ((typeOf _vehicle) in _offroads) then {
@@ -341,7 +358,11 @@ if (_vehicle isKindOf "CargoNet_01_base_F") then {
 	clearItemCargoGlobal  _vehicle;
 };
 
-
+//change supply crate equipment
+if (_vehicle isKindOf "B_supplyCrate_F" || _vehicle isKindOf "O_supplyCrate_F") then {
+	_equipment = (missionNamespace getVariable format["CTI_%1_Supply_Crate", _t_side]);
+	if (count _equipment > 0) then {[_vehicle, _equipment] call CTI_CO_FNC_EquipVehicleCargoSpace;};
+};
 
 //AdminZeus
 
@@ -349,7 +370,8 @@ if !( isNil "ADMIN_ZEUS") then {
 	if !(CTI_isServer) then {
 		["SERVER", "Server_Addeditable",[ADMIN_ZEUS,_vehicle]] call CTI_CO_FNC_NetSend;
 	} else {
-		[ADMIN_ZEUS, _vehicle] call CTI_PVF_Server_Addeditable;
+		ADMIN_ZEUS addCuratorAddons (configSourceAddonList (configFile >> "CfgVehicles" >> typeof _vehicle));
+		ADMIN_ZEUS addCuratorEditableObjects [[_vehicle],true] ;
 	};
 };
 
@@ -410,7 +432,24 @@ if (_vehicle  isKindOf "Helicopter") then {
 
 //_vehicle addEventHandler ["getIn", {if ((isplayer (_this select 2)) && ({isplayer _x} count (crew (_this select 0)))<2) exitwith {(_this select 2) assignAsCommander (_this select 0)}}];
 
-//--- Apply custom loadout if one exists
-[typeOf _vehicle, _vehicle] call CTI_CO_FNC_ApplyLoadout;
+// additional actions
+if (_vehicle isKindOf "rhs_zil131_msv" || _vehicle isKindOf "rhsusf_M1083A1P2_D_fmtv_usarmy" || _vehicle isKindOf "rhsusf_M1083A1P2_WD_fmtv_usarmy" || _vehicle isKindOf "rhsusf_M1085A1P2_B_D_Medical_fmtv_usarmy" || _vehicle isKindOf "rhsusf_M1085A1P2_B_WD_Medical_fmtv_usarmy") then {
+	_text = "Treat at " + getText(configFile >> "CfgVehicles" >> typeOf _vehicle >> "displayName");
+	_action = _vehicle addAction [
+		_text,
+		{(_this select 1) action ["heal", (_this select 1)]; sleep 4; if (alive (_this select 1)) then {(_this select 1) setDammage 0;};},
+		nil,
+		1.5,
+		true,
+		true,
+		"",
+		"((getDammage _this) > 0) && (_this == vehicle _this) && (alive _target)",
+		5.5,
+		false,
+		"",
+		""
+	];
+	_vehicle setUserActionText [_action, _text, "<img size='2' image='\a3\ui_f\data\IGUI\Cfg\Actions\heal_ca'/>"];
+};
 
 _vehicle

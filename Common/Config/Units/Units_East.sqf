@@ -263,6 +263,15 @@ _u = _u + [3];
 _f = _f + [CTI_FACTORY_BARRACKS];
 _s = _s + [""];
 
+_c = _c + ['rhs_msv_emr_aa'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [350];
+_t = _t + [5];
+_u = _u + [2];
+_f = _f + [CTI_FACTORY_BARRACKS];
+_s = _s + [""];
+
 _c = _c + ['rhs_msv_emr_at'];
 _p = _p + [''];
 _n = _n + [''];
@@ -1130,7 +1139,6 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];*/
 
-/* UAVs temporarily disabled
 _c = _c + ['rhs_pchela1t_vvs'];
 _p = _p + [''];
 _n = _n + [''];
@@ -1175,7 +1183,6 @@ _t = _t + [35];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
-*/
 
 
 _c = _c + ['rhs_ka60_grey'];
@@ -1210,15 +1217,6 @@ _p = _p + [''];
 _n = _n + [''];
 _o = _o + [10000];
 _t = _t + [40];
-_u = _u + [1];
-_f = _f + [CTI_FACTORY_AIR];
-_s = _s + [""];
-
-_c = _c + ['RHS_Mi8AMTSh_vvsc'];
-_p = _p + [''];
-_n = _n + ['Mi-8AMTSh'];
-_o = _o + [22000];
-_t = _t + [45];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
@@ -1259,24 +1257,6 @@ _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
-_c = _c + ['RHS_Mi24Vt_vvsc'];
-_p = _p + [''];
-_n = _n + ['Mi-24VT'];
-_o = _o + [35000];
-_t = _t + [50];
-_u = _u + [1];
-_f = _f + [CTI_FACTORY_AIR];
-_s = _s + [""];
-
-_c = _c + ['rhsgref_mi24g_CAS'];
-_p = _p + [''];
-_n = _n + ['Mi-24G'];
-_o = _o + [45000];
-_t = _t + [50];
-_u = _u + [1];
-_f = _f + [CTI_FACTORY_AIR];
-_s = _s + [""];
-
 _c = _c + ['rhs_mi28n_vvs'];
 _p = _p + [''];
 _n = _n + [''];
@@ -1304,59 +1284,59 @@ _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
-// _c = _c + ['rhssaf_airforce_o_l_18'];
-// _p = _p + [''];
-// _n = _n + [''];
-// _o = _o + [50000];
-// _t = _t + [60];
-// _u = _u + [1];
-// _f = _f + [CTI_FACTORY_AIR];
-// _s = _s + [""];
+_c = _c + ['rhssaf_airforce_o_l_18'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [50000];
+_t = _t + [60];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
 
-// _c = _c + ['rhssaf_airforce_o_l_18_101'];
-// _p = _p + [''];
-// _n = _n + [''];
-// _o = _o + [50000];
-// _t = _t + [60];
-// _u = _u + [1];
-// _f = _f + [CTI_FACTORY_AIR];
-// _s = _s + [""];
+_c = _c + ['rhssaf_airforce_o_l_18_101'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [50000];
+_t = _t + [60];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
 
-// _c = _c + ['rhs_mig29s_vvsc'];
-// _p = _p + [''];
-// _n = _n + [''];
-// _o = _o + [60000];
-// _t = _t + [60];
-// _u = _u + [1];
-// _f = _f + [CTI_FACTORY_AIR];
-// _s = _s + [""];
+_c = _c + ['rhs_mig29s_vvsc'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [60000];
+_t = _t + [60];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
 
-// _c = _c + ['rhs_mig29sm_vvsc'];
-// _p = _p + [''];
-// _n = _n + [''];
-// _o = _o + [60000];
-// _t = _t + [60];
-// _u = _u + [1];
-// _f = _f + [CTI_FACTORY_AIR];
-// _s = _s + [""];
+_c = _c + ['rhs_mig29sm_vvsc'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [60000];
+_t = _t + [60];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
 
-// _c = _c + ['RHS_T50_vvs_052'];
-// _p = _p + [''];
-// _n = _n + [''];
-// _o = _o + [70000];
-// _t = _t + [60];
-// _u = _u + [1];
-// _f = _f + [CTI_FACTORY_AIR];
-// _s = _s + [""];
+_c = _c + ['RHS_T50_vvs_052'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [70000];
+_t = _t + [60];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
 
-// _c = _c + ['RHS_T50_vvs_054'];
-// _p = _p + [''];
-// _n = _n + [''];
-// _o = _o + [70000];
-// _t = _t + [60];
-// _u = _u + [1];
-// _f = _f + [CTI_FACTORY_AIR];
-// _s = _s + [""];
+_c = _c + ['RHS_T50_vvs_054'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [70000];
+_t = _t + [60];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
 
 _c = _c + ['RHS_TU95MS_vvs_old'];
 _p = _p + [''];
@@ -1554,7 +1534,7 @@ _o = _o + [80000];
 _t = _t + [30];
 _u = _u + [0];
 _f = _f + [""];
-_s = _s + [""];
+_s = _s + [""];*/
 
 _c = _c + ['O_Radar_System_02_F'];
 _p = _p + [''];
@@ -1573,6 +1553,6 @@ _t = _t + [30];
 _u = _u + [0];
 _f = _f + [""];
 _s = _s + [""];
-*/
+
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";

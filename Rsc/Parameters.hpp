@@ -3,7 +3,7 @@ class Params {
 		title = $STR_CTI_AI_TEAMS_ENABLED;
 		values[] = {0,1,2,3};
 		texts[] = {$STR_CTI_DISABLED, $STR_CTI_AI_TEAMS_ENABLED_1, $STR_CTI_AI_TEAMS_ENABLED_2, $STR_CTI_AI_TEAMS_ENABLED_3};
-		default = 3;
+		default = 0;
 	};
 	class CTI_AI_TEAMS_NB{
 		title = $STR_CTI_AI_TEAMS_NB;
@@ -510,7 +510,7 @@ class Params {
 		title = $STR_CTI_EW_HUD_S;
 		values[] = {1,2,3,4,5};
 		texts[] = {$STR_CTI_EW_HUD_S_HIGH, $STR_CTI_EW_HUD_S_MEDHIGH, $STR_CTI_EW_HUD_S_MEDLOW, $STR_CTI_EW_HUD_S_LOW, $STR_CTI_EW_HUD_S_DIS};
-		default = 2;
+		default = 5;
 	};
 	class CTI_EW_HUD_I {
 		title = $STR_CTI_EW_HUD_I;
@@ -558,7 +558,7 @@ class Params {
 		title = $STR_CTI_TROPHY_APS;
 		values[] = {0,1};
 		texts[] = {$STR_CTI_WEATHER_ALLOWRAIN_F,$STR_CTI_WEATHER_ALLOWRAIN_T};
-		default = 1;
+		default = 0;
 	};
 	class CTI_AC_ENABLED {
 		title = $STR_CTI_AC_ENABLED;

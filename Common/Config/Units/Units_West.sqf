@@ -220,6 +220,15 @@ _u = _u + [2];
 _f = _f + [CTI_FACTORY_BARRACKS];
 _s = _s + [""];
 
+_c = _c + ['rhsusf_army_ocp_aa'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [350];
+_t = _t + [5];
+_u = _u + [2];
+_f = _f + [CTI_FACTORY_BARRACKS];
+_s = _s + [""];
+
 _c = _c + ['rhsusf_army_ocp_javelin'];
 _p = _p + [''];
 _n = _n + [''];
@@ -1176,7 +1185,6 @@ _u = _u + [0];
 _f = _f + [CTI_FACTORY_AMMO];
 _s = _s + ["service-ammotruck"];
 
-/* UAVs temporarily disabled
 _c = _c + ['B_UAV_02_F'];
 _p = _p + [''];
 _n = _n + ['MQ-4A Greyhawk AA'];
@@ -1221,7 +1229,6 @@ _t = _t + [35];
 _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
-*/
 
 _c = _c + ['RHS_MELB_H6M'];
 _p = _p + [''];
@@ -1349,14 +1356,14 @@ _u = _u + [1];
 _f = _f + [CTI_FACTORY_AIR];
 _s = _s + [""];
 
-// _c = _c + ['rhsusf_f22'];
-// _p = _p + [''];
-// _n = _n + [''];
-// _o = _o + [70000];
-// _t = _t + [60];
-// _u = _u + [1];
-// _f = _f + [CTI_FACTORY_AIR];
-// _s = _s + [""];
+_c = _c + ['rhsusf_f22'];
+_p = _p + [''];
+_n = _n + [''];
+_o = _o + [70000];
+_t = _t + [60];
+_u = _u + [1];
+_f = _f + [CTI_FACTORY_AIR];
+_s = _s + [""];
 
 _c = _c + ["B_Slingload_01_Medevac_F"];
 _p = _p + [''];
@@ -1554,7 +1561,7 @@ _o = _o + [80000];
 _t = _t + [30];
 _u = _u + [0];
 _f = _f + [""];
-_s = _s + [""];
+_s = _s + [""];*/
 
 _c = _c + ['B_Radar_System_01_F'];
 _p = _p + [''];
@@ -1573,6 +1580,6 @@ _t = _t + [30];
 _u = _u + [0];
 _f = _f + [""];
 _s = _s + [""];
-*/
+
 
 [_side, _faction, _c, _p, _n, _o, _t, _u, _f, _s] call compile preprocessFileLineNumbers "Common\Config\Units\Set_Units.sqf";
